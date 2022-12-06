@@ -1,0 +1,22 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Modifier la société: {{ company.name }}{% endblock %}
+
+{% block body %}
+
+<div class="card shadow-sm">
+    <div class="card-header py-3"><h6 class="mb-0 fw-bold">Modifier la société: {{ company.name }}</h6></div>
+
+    <div class="card-body">
+
+        {{ include('admin/admin_company/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
+
+        {{ include('admin/admin_company/_delete_form.html.twig') }}
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ include('admin/admin_company/_scripts.html.twig') }}
+{% endblock %}

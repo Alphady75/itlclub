@@ -4,6 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    app.path.companies_documents: /uploads/files/companies/documents
+    app.path.rib_files: /uploads/users/rib
+    app.path.cni_files: /uploads/users/cni
 
 services:
     # default configuration for services in *this* file

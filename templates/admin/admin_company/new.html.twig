@@ -1,0 +1,20 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Créer un nouvel partenaire{% endblock %}
+
+{% block body %}
+
+<div class="card shadow-sm">
+    <div class="card-header py-3"><h6 class="mb-0 fw-bold">Créer un nouvel partenaire</h6></div>
+
+    <div class="card-body">
+
+        {{ include('admin/admin_company/_form.html.twig') }}
+
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ include('admin/admin_company/_scripts.html.twig') }}
+{% endblock %}

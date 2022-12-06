@@ -1,0 +1,57 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Adresses{% endblock %}
+
+{% block body %}
+<div class="card shadow-sm">
+   <div class="card-header py-3">
+    <h6 class="mb-0 fw-bold ">Adresses <span class="badge bg-primary">{{ adresses.getTotalItemCount }}</span></h6>
+</div>
+<div class="card-body">
+    <div class="table-opration">
+        <div class="btn-group me-sm-2 mb-2 zindex-popover">
+            <a href="{{ path('admin_adress_new') }}" class="btn btn-dark float-right">
+                <i class="icofont-ui-add me-2 fs-6"></i>Ajouter 
+            </a>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Numéro</th>
+                        <th>Ruelle/Avenue</th>
+                        <th>Code postal</th>
+                        <th>Ville</th>
+                        <th>Crée le</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for adress in adresses %}
+                    <tr>
+                        <td>{{ adress.id }}</td>
+                        <td>{{ adress.number }}</td>
+                        <td><strong>{{ adress.street }}</strong></td>
+                        <td>{{ adress.postalCode }}</td>
+                        <td>{{ adress.city }}</td>
+                        <td>{{ adress.created|date('d/m/Y') }}</td>
+                        <td>
+                            <a href="{{ path('admin_adress_edit', {'id': adress.id}) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Modifier</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6">Aucune adresse trouvée</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {{ knp_pagination_render(adresses) }}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

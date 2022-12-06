@@ -1,0 +1,19 @@
+<div class="user-count-sidebare">
+	<div class="avatar-compte text-center pb-5">
+		<img src="{{ asset('themes/front/assets/img/core/user.jpg') }}" width="150" height="150" class="rounded-circle"> <br>
+		<strong>{{ app.user.lastname ~ ' ' ~ app.user.name }}</strong> <br>
+		<span>{{ app.user.email }}</span>
+	</div>
+	<div class="list-group bg-danger">
+
+		<a href="{{ path('app_user_profil') }}" class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'app_user_profil' ? 'active' : '' }}"><i class="fa fa-user"></i> Compte</a>
+
+		<a href="{{ path('app_user_change_password') }}" class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'app_user_change_password' ? 'active' : '' }}"><i class="fa fa-cog"></i> Modifier le mot de passe</a>
+
+		<a href="{{ path('app_verifier_numero_carte') }}" class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'app_verifier_numero_carte' ? 'active' : '' }}"><i class="fa fa-id-card"></i> Vérifier le numéro de carte</a>
+
+		<a href="{{ path('app_user_confidentialite') }}" class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'app_user_confidentialite' ? 'active' : '' }}"><i class="fa fa-lock-open"></i> Confidentialité</a>
+
+		<a href="{{ path('app_user_supprimer_compte') }}" class="list-group-item list-group-item-action {{ app.request.attributes.get('_route') == 'app_user_supprimer_compte' ? 'active' : '' }}"><i class="fa fa-trash"></i> Supprimer mon compte</a>
+	</div> 
+</div>

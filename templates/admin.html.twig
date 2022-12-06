@@ -1,0 +1,60 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Tableau de bord {{ appName }} {% endblock %}</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('themes/front/assets/img/cropped-cropped-Plan-de-travail-2-300x300.png') }}" sizes="32x32" />
+    <!-- plugin css file  -->
+    <link rel="stylesheet" href="{{ asset('themes/admin/node_modules/owl.carousel2/dist/assets/owl.carousel.min.css') }}" />
+    <!-- project css file  -->
+    <link rel="stylesheet" href="{{ asset('themes/admin/dist/assets/css/e-learn.style.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('themes/admin/dist/assets/css/style.css') }}">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{{ asset('themes/front/assets/css/all.css') }}">
+    {% block stylesheets %}
+    	{{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+
+<div id="elearn-layout" class="theme-black" data-turbo="false">
+
+	{{ include('widgets/admin/_sidebar.html.twig') }}
+
+	<!-- main body area -->
+    <div class="main px-lg-4 px-md-4">
+
+	    {{ include('widgets/admin/_header.html.twig') }}
+
+	    <!-- Body: Body -->
+	    <div class="body d-flex py-lg-3 py-md-2">
+	        <div class="container-xxl">
+                
+                {% include "widgets/_FlashMessage.html.twig" %}
+
+	           	{% block body %}{% endblock %}
+	        </div>
+	    </div>
+
+	</div>
+
+</div>
+
+<!-- Jquery Core Js -->
+<script src="{{ asset('themes/admin/dist/assets/bundles/libscripts.bundle.js') }}"></script>
+
+<!-- Plugin Js-->
+<script src="{{ asset('themes/admin/node_modules/owl.carousel2/dist/owl.carousel.min.js') }}"></script>
+
+<!-- Jquery Page Js -->
+<script src="{{ asset('themes/admin/js/template.js') }}"></script>
+<script src="{{ asset('themes/admin/js/page/index.js') }}"></script>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+</body>
+</html>

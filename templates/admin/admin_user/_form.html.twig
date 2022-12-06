@@ -1,0 +1,89 @@
+{{ form_start(form) }}
+
+<div class="row">
+    <div class="col-md-8">
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.name) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.lastname) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.telephone) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.job) }}
+            </div>
+        </div>
+
+        {{ form_row(form.roles) }}
+
+        {{ form_row(form.email) }}
+
+        <div class="p-3 border rounded mt-3 mb-3">
+        {% if app.request.attributes.get('_route') == 'app_user_generate_card_number' %}
+            {{ form_row(form.numeroCompte, {'value' : number}) }}
+        {% else %}
+            {{ form_row(form.numeroCompte) }}
+        {% endif %}
+
+            {{ form_row(form.validateNumCompte) }}
+
+            {# <button href="{{ path('generate_number_card') }}" class="btn btn-dark mr-3">Générer numéro de carte</button> #}
+
+            <a href="{{ path('app_user_generate_card_number', {'id': user.id}) }}" class="btn btn-primary">
+                Générer numéro
+            </a>
+
+
+        </div>
+
+
+        {% if app.request.attributes.get('_route') == 'admin_user_new' %}
+
+            <div class="row">
+                <div class="col-md-12">
+                    {{ form_row(form.birthdayDate) }}
+                </div>
+            </div>
+
+            {{ form_row(form.plainPassword) }}
+
+        {% endif %}
+        
+
+        {{ form_row(form.isVerified) }}
+
+        {% if app.request.attributes.get('_route') == 'admin_user_edit' %}
+
+            {% if user.company %}
+
+            <div class="pt-3 pb-3">
+                
+                <a href="{{ path('admin_contract_edit', {'id': user.company.contract.id }) }}" class="btn btn-primary">
+                Modifier le contrat
+                </a>
+                
+                <a href="{{ path('admin_company_edit', {'id': user.company.id }) }}" class="btn btn-primary">
+                    Modifier l'entreprise
+                </a>
+
+            </div>
+
+            {% endif %}
+
+        {% endif %}
+
+        <button class="btn btn-dark mr-3">{{ button_label|default('Enregistrer') }}</button>
+
+        <a href="{{ path('admin_user_index') }}" class="btn btn-secondary">Annuler</a>
+        
+    </div>
+</div>
+
+{{ form_end(form) }}

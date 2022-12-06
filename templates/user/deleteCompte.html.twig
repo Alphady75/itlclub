@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer votre compte{% endblock %}
+
+{% block body %}
+<section class="user-compt-section costom-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				
+				{% include('user/_sideBare.html.twig') %}
+				
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-input-border label-bold">
+					{{ form_start(form) }}
+						<legend class="font-weight-bold h5"><i class="fa fa-trash"></i> Supprimer le compte</legend>
+						<div class="form-group">
+							<p>Êtes-vous certain·e de vouloir supprimer votre compte ? Ceci entrainera la suppression de toutes vos données sur ce site. Pour supprimer votre compte, saisissez votre mot de passe ci-dessous.</p>
+						</div>
+						{{ form_widget(form) }}
+
+						<div class="form-group mt-5 mb-5">
+							<button type="submit" class="btn primary-btn">Supprimer le compte</button>
+						</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	
+{% endblock %}

@@ -1,0 +1,323 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ appName }} - Entreprise{% endblock %}
+
+{% block body %}
+
+{% include('home/_home_slider.html.twig') %}
+
+<!-- START DIVIDER SECTION -->
+<section class="section-divider">
+	<h2>UN CONCEPT QUI REPOSE SUR 4 PILIERS</h2>
+</section>	
+<!-- END DIVIDER SECTION -->
+
+<!-- CONCEPT SECTION -->
+<section class="concept-section p-0">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 d-flex align-content-stretch accompagnement">
+				<div class="box">
+					<span class="counter">01</span>
+					<span class="subtitle">Accompagnement</span>
+					<h4>Accompagner</h4>
+
+					<p>
+						L’accompagnement est un rôle primordial pour une entreprise. Intellia sélectionne des partenaires qui développent au quotidien des services pour vous permettre, vous adhérents, d’évoluer dans votre domaine de compétence. 
+					</p>
+				</div>
+			</div>
+			<div class="col-sm-3 d-flex align-content-stretch optimiser">
+				<div class="box">
+					<span class="counter">02</span>
+					<span class="subtitle">OPTIMISATION</span>
+					<h4>OPTIMISER</h4>
+
+					<p>
+						La sélection de certains partenaires vous permettra, vous adhérents d’être accompagnés au plus près dans votre entreprise afin d’optimiser vos coûts et dépenses.
+					</p>
+				</div>
+			</div>
+			<div class="col-sm-3 d-flex align-content-stretch promouvoir">
+				<div class="box">
+					<span class="counter">03</span>
+					<span class="subtitle">développement</span>
+					<h4>DÉVELOPPER</h4>
+
+					<p>
+						Apportez une puissance de développement complémentaire à votre entreprise sans pareil. Des produits additionnels et des formations complémentaires vous permettront d’ouvrir vos canaux de développement.  
+					</p>
+				</div>
+			</div>
+			<div class="col-sm-3 d-flex align-content-stretch developper">
+				<div class="box">
+					<span class="counter">04</span>
+					<span class="subtitle">Promotion</span>
+					<h4>PROMOUVOIR</h4>
+
+					<p>
+						Certains partenaires offrent l’opportunité d’accéder à des offres exclusives, ces ambassadeurs prestigieux imagineront des offres uniques pour le réseau Intellia.  
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END CONCEPT SECTION -->
+
+<!-- START DIVIDER SECTION -->
+<section class="section-divider">
+	<h2>TESTER l'éligibilité de la décennale </h2>
+</section>	
+<!-- END DIVIDER SECTION -->
+
+<!-- START ELIGIBLE SECTION -->
+<section class="section-eligible bg-primary" style="background-image: url('{{ asset('themes/front/assets/img/slider.svg')  }}');">
+	<div class="caption text-center">
+		<a href="{{ path('app_register') }}" class="btn primary-btn-outline-light">Tester votre éligibilité</a>
+	</div>
+</section>
+<!-- END ELIGIBLE SECTION -->
+
+<!-- START RESEAU UNIQUE SECTION -->
+<section class="about_us section-padding cover-bg reseau-unique-section" style="background-image: url('{{ asset('themes/front/assets/img/core/WAVE_BACKGROUND3.png') }}');">
+	<div class="container">
+		<div class="row align-items-center">									
+			<div class="col-md-11 mx-auto">
+				<div class="row">
+					<div class="col-sm-6 mx-auto col-xs-12">
+						<div class="about_img position-relative d-none d-md-block">
+							<img src="{{ asset('themes/front/assets/img/core/CB_verso-1.png') }}" alt="about image" class="img-1  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+							<img src="{{ asset('themes/front/assets/img/core/CB_recto-1.png') }}" class="img-2 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s">
+						</div>					
+					</div><!--- END COL -->
+
+					<div class="col-sm-6 mx-auto col-xs-12">
+						<div class="about-content lg-margin-top">						
+							<div class="section-title text-left">							
+								<h2>UN RÉSEAU UNIQUE</h2>	
+							</div>
+
+							<div class="about_img position-relative d-block d-md-none">
+								<img src="{{ asset('themes/front/assets/img/core/CB_verso-1.png') }}" alt="about image" class="img-1  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+								<img src="{{ asset('themes/front/assets/img/core/CB_recto-1.png') }}" class="img-2 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.1s">
+							</div>
+
+							<p>Intellia est bien plus qu’une communauté, Intellia se veut être le premier réseau de partenaires, attribuant des offres et services exclusifs à destination d’un réseau d’adhérents. Nous avons rassemblé et matérialisé tout ça au travers d’une carte, d’une plateforme digitale et un annuaire privé.</p>	
+
+							<a href="{{ path('app_register') }}" class="primary-btn-outline">Je veux adhérer</a>									
+						</div>
+					</div><!--- END COL -->	
+				</div>
+			</div>
+		</div><!--- END ROW -->		
+	</div><!--- END CONTAINER -->
+</section>
+<!-- END RESEAU UNIQUE SECTION -->
+
+<!-- START ADHERER SECTION -->
+<section id="service" class="our_service secondary-bg section-padding">
+	<div class="container">					
+		<div class="section-title text-left wow zoomIn">
+			<div class="row">
+				<div class="col-lg-6 mx-auto">
+					<h2 class="text-light text-center">POUR VOUS ADHÉRENTS</h2>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row text-center">	
+			<div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+				<div class="single_service">
+					<img src="{{ asset('img/blanc-Developper.svg') }}">
+					<div class="ser_content">
+						<h4>DÉVELOPPEMENT</h4>
+						<p>Intellia a été pensé pour vous et vous permettra de développer sans limite. Votre réseau, votre business, vos intérêts et bien plus encore. Tout cela est possible grâce à nos partenaires qui constituent les 4 piliers Intellia. Développer, optimiser, accompagner, promouvoir.</p>
+					</div>
+				</div>
+			</div><!--END COL -->
+
+			<div class="col-lg-4 col-md-6 col-sm-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+				<div class="single_service">
+					<img src="{{ asset('img/blanc-Offre-service.svg') }}">
+					<div class="ser_content">
+						<h4>AVANTAGES</h4>
+						<p>Accédez et bénéficiez d’offres et services exclusifs. Réservés uniquement aux détenteurs de la carte club Intellia.</p>
+					</div>
+				</div>
+			</div>
+			<!--END COL -->
+
+			<div class="col-lg-4 col-md-6 col-sm-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+				<div class="single_service">
+					<img src="{{ asset('img/blanc-Communaute.svg') }}">
+					<div class="ser_content">
+						<h4>COMMUNAUTÉ</h4>
+						<p>Nous avons pensé une plateforme et un annuaire privé de mises en relations pour constituer une communauté engagée. Bienvenue !</p>
+					</div>
+				</div>
+			</div><!--END COL -->
+
+			<div class="col-lg-4 col-md-6 col-sm-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+				<div class="single_service">
+					<img src="{{ asset('img/blanc-Adherent.svg') }}">
+					<div class="ser_content">
+						<h4>100% RÉSEAU</h4>
+						<p>Vous intégrez un réseau, composé de partenaires et adhérents. Réunir des partenaires prestigieux constituera un réseau de qualité.</p>
+					</div>
+				</div>
+			</div><!--END COL -->
+
+			<div class="col-lg-4 col-md-6 col-sm-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+				<div class="single_service">
+					<img src="{{ asset('img/blanc-Accompagner.svg') }}">
+					<div class="ser_content">
+						<h4>ÉVÈNEMENT</h4>
+						<p>Cette carte est votre sésame pour accéder à tous les évènements Intellia. Lieux de rencontres entres partenaires, adhérents et autres acteurs du réseau.</p>
+					</div>
+				</div>
+			</div><!--END COL -->
+
+			<div class="col-lg-4 col-md-6 col-sm-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+				<div class="single_service">
+					<img src="{{ asset('img/blanc-Sans-engagement.svg') }}">
+					<div class="ser_content">
+						<h4>SANS ENGAGEMENT</h4>
+						<p>Zéro engagement, vous êtes libre de résilier votre carte quand vous le souhaitez en vous rapprochant de votre gestionnaire dédié Intellia.</p>
+					</div>
+				</div>
+			</div><!--END COL -->
+		</div><!--END  ROW -->
+	</div><!-- END CONTAINER -->
+</section>
+<!-- START ADHERER SECTION -->
+
+<!-- START PARTENAIRE SECTION -->
+<section class="partenaire-section costom-padding">
+	<div class="container">
+		<div class="section-title wow zoomIn">
+			<div class="row">
+				<div class="col-lg-6 mx-auto">
+					<h2 class="text-center">NOS PARTENAIRES</h2>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-3 col-md-3 mx-auto">
+				<div class="partenaire_box">
+					<a href="" class="partenaire_img">
+						<img src="{{ asset('themes/front/assets/img/partenaires/Logo-Axa.svg') }}" class="img-fluid">
+					</a>
+				</div>
+			</div>
+			<div class="col-3 col-md-3">
+				<div class="partenaire_box">
+					<a href="" class="partenaire_img">
+						<img src="{{ asset('themes/front/assets/img/partenaires/Logo-oxideve.svg') }}" class="img-fluid">
+					</a>
+				</div>
+			</div>
+			<div class="col-3 col-md-3">
+				<div class="partenaire_box">
+					<a href="" class="partenaire_img">
+						<img src="{{ asset('themes/front/assets/img/partenaires/Logo-gerard-bertrand.svg') }}" class="img-fluid">
+					</a>
+				</div>
+			</div>
+			<div class="col-3 col-md-3">
+				<div class="partenaire_box">
+					<a href="" class="partenaire_img">
+						<img src="{{ asset('themes/front/assets/img/partenaires/Logo-genius.svg') }}" class="img-fluid">
+					</a>
+				</div>
+			</div>
+			<div class="col-3 col-md-3">
+				<div class="partenaire_box">
+					<a href="" class="partenaire_img">
+						<img src="{{ asset('themes/front/assets/img/partenaires/Logo-solipac.svg') }}" class="img-fluid">
+					</a>
+				</div>
+			</div>
+			<div class="col-3 col-md-3">
+				<div class="partenaire_box">
+					<a href="" class="partenaire_img">
+						<img src="{{ asset('themes/front/assets/img/partenaires/logo-2.svg') }}" class="img-fluid">
+					</a>
+				</div>
+			</div>
+			<div class="col-3 col-md-3">
+				<div class="partenaire_box">
+					<a href="" class="partenaire_img">
+						<img src="{{ asset('themes/front/assets/img/partenaires/Logo-Initia-Consulting.svg') }}" class="img-fluid">
+					</a>
+				</div>
+			</div>
+			<div class="col-3 col-md-3">
+				<div class="partenaire_box">
+					<a href="" class="partenaire_img">
+						<img src="{{ asset('themes/front/assets/img/partenaires/Logo-SAP.svg') }}" class="img-fluid">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- END PARTENAIRE SECTION -->
+
+<!-- START COUNDOWN --> 
+<section class="counter_feature lightgray-bg costom-padding-1">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+				<div class="counter">				
+					<div class="counter_content">
+						<h2><span class="timer">4</span></h2>  
+						<h3>PILIERS</h3>
+						<p>que nous mettons en avant car ils sont pour nous le moteur d’une entreprise.</p>
+					</div>
+				</div>
+			</div> <!--- END COL -->   
+
+			<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+				<div class="counter">				
+					<div class="counter_content">
+						<h2>+<span class="timer">20</span></h2>
+						<h3>PARTENAIRES</h3>  
+						<p>qui œuvrent pour vous
+							proposer des avantages,
+						offres et services uniques.</p>
+					</div>
+				</div>
+			</div><!--- END COL -->   
+
+			<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+				<div class="counter">				
+					<div class="counter_content">
+						<h2>+<span class="timer">350</span></h2>
+						<h3>ADHERENTS</h3> 
+						<p>qui bénéficient déjà de tous
+							les avantages, offres et services
+						uniques du Club Intellia.</p>
+					</div>
+				</div>
+			</div> <!--- END COL --> 
+
+			<div class="col-lg-3 col-sm-6 col-xs-12 wow fadeInLeft d-flex align-content-stretch" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+				<div class="counter">				
+					<div class="counter_content">
+						<h2><span class="timer">1</span></h2>
+						<h3>PROCESS</h3> 
+						<p>de mises en relations unique regroupant
+							une plateforme digitale connectée
+						et un groupe privé Facebook.</p>
+					</div>
+				</div>
+			</div> <!--- END COL -->                
+		</div><!--- END ROW -->
+	</div><!--- END CONTAINER -->
+</section>
+<!-- END COUNDOWN -->
+{% endblock %}

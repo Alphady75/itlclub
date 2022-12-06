@@ -1,0 +1,34 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-10">
+
+        {{ form_row(form.name) }}
+
+        {{ form_row(form.categorieoffre) }}
+
+        {{ form_row(form.imageFile) }}
+
+        {{ form_row(form.description) }}
+
+        {{ form_row(form.contenu) }}
+
+        {{ form_row(form.user) }}
+
+        {{ form_row(form.visibility) }}
+
+        <hr>
+        <p class="lead">Informations pour adhérents</p>
+
+        {{ form_row(form.partenaireInfo1) }}
+
+        {{ form_row(form.partenaireInfo2) }}
+
+        {{ form_row(form.partenaireInfoVisibility) }}
+    
+        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+
+        <a href="{{ path('admin_offres_index') }}" class="btn btn-danger text-light">Annuler</a>
+
+    </div>
+</div>
+{{ form_end(form) }}

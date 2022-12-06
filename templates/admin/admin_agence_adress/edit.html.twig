@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Edit AgenceAdress{% endblock %}
+
+{% block body %}
+    <div class="card-header py-3"><h6 class="mb-0 fw-bold">Modifier une adresse</h6></div>
+    
+    <div class="card-body">
+
+        {{ include('admin/admin_agence_adress/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
+        
+    </div>
+    
+{% endblock %}

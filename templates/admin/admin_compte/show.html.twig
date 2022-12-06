@@ -1,0 +1,87 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Compte de {{ user.name ~ ' ' ~ user.lastname }}{% endblock %}
+
+{% block body %}
+
+<div class="card">
+    <div class="card-header">
+        <h1 class="">Compte de {{ user.name ~ ' ' ~ user.lastname }}</h1>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover table-borderless">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ user.id }}</td>
+                </tr>
+                <tr>
+                    <th>Civilité</th>
+                    <td>{{ user.civilite }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ user.name }}</td>
+                </tr>
+                <tr>
+                    <th>Prénom</th>
+                    <td>{{ user.lastname }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Mot de passe</th>
+                    <td><i class="fa fa-key"></i>****</td>
+                </tr>
+                <tr>
+                    <th>Fonction</th>
+                    <td>{{ user.job }}</td>
+                </tr>
+                <tr>
+                    <th>Téléphone</th>
+                    <td>{{ user.telephone }}</td>
+                </tr>
+                <tr>
+                    <th>Roles</th>
+                    <td>
+                        {% for role in user.roles %} {% if role == 'ROEL_ADMIN' %}
+                        <span class="badge bg-primary">Administrateur</span>
+                        {% elseif role == 'ROLE_COMMERCIAL' %}
+                        <span class="badge bg-secondary">Commercial</span>
+                        {% elseif role == 'ROLE_ADHERANT' %}
+                        <span class="badge bg-secondary">Adhérent</span>
+                        {% endif %} {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Statut du compte</th>
+                    <td>
+                        <span class="badge bg-{{ user.isVerified ? " success" : "danger" }}">
+                            {{ user.isVerified ? "Activé" : "Désactivé" }}
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Date d'inscription</th>
+                    <td>
+                        <span>{{ user.subscriptionDate ? user.subscriptionDate|date('d/m/Y H:i:s') : '' }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Actions</th>
+                    <td>
+
+                        <a href="{{ path('app_admin_compte_edit', { id: user.id }) }}" class="btn btn-primary">Mettre a
+                            jour</a>
+
+                        {{ include("admin/admin_compte/_delete_form.html.twig") }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

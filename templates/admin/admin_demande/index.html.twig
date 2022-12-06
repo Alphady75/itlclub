@@ -1,0 +1,95 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Demandes{% endblock %}
+
+{% block body %}
+<div class="card shadow-sm">
+   <div class="card-header py-3">
+    <h6 class="mb-0 fw-bold ">Demandes <span class="badge bg-primary">{{ demandes.getTotalItemCount }}</span></h6>
+</div>
+<div class="card-body">
+    <div class="table-opration">
+        <div class="table-responsive">
+
+            <table class="table table-hover w-100">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Type de demandes</th>
+                        <th>Adhérents</th>
+                        <th>Date</th>
+                        <th>Statut</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for demande in demandes %}
+                    <tr class="bg-{{ demande.statut ? 'light text-secondary' : '' }}">
+                        <td>{{ demande.id }}</td>
+                        <td>
+                            {% if demande.hidenprofil %}
+
+                                <span class="badge bg-secondary"><i class="fa fa-user-alt-slash"></i> Masquer mon profil du répertoire</span> <br>
+
+                            {% endif %}
+
+                            {% if demande.downloaddata %}
+
+                                <span class="badge bg-success"><i class="fa fa-download"></i> Téléchargez mes données</span> <br>
+
+                            {% endif %}
+
+                            {% if demande.deletedata %}
+
+                                <span class="badge bg-primary text-light"><i class="fa fa-trash"></i> Effacement de mes données</span> <br>
+
+                            {% endif %}
+
+                            {% if demande.deleteCompte %}
+
+                                <span class="badge bg-danger text-light"><i class="fa fa-trash"></i>
+                                <i class="fa fa-user"></i> Supprimer mon compte</span>
+
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <div>
+                                <strong class="d-block">{{ demande.user.lastname ~ ' '~ demande.user.name }}</strong>
+                                <a href="mailto:{{ demande.user.email }}"><i class="fa fa-paper-plane"></i> {{ demande.user.email }}</a>
+                            </div>
+                        </td>
+
+                        <td>{{ demande.created|date('d/m/Y') }}</td>
+
+                        <td><span class="badge bg-{{ demande.statut ? 'success' : 'secondary' }}">{{ demande.statut ? 'Confirmer' : 'En attente' }}</span></td>
+
+                        <td>
+
+                            {% if demande.statut %}
+
+
+                            {% else %}
+
+                                {{ include('admin/admin_demande/_validate_form.html.twig') }}
+
+                            {% endif %}
+
+                            {{ include('admin/admin_demande/_delete_form.html.twig') }}
+
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">Aucune demandes</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {{ knp_pagination_render(demandes) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

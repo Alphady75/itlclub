@@ -1,0 +1,82 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Agences{% endblock %}
+
+{% block body %}
+<div class="card shadow-sm">
+ <div class="card-header py-3">
+    <h6 class="mb-0 fw-bold ">Agences <span class="badge bg-primary">{{ agencies.getTotalItemCount }}</span></h6>
+</div>
+<div class="card-body">
+    <div class="table-opration">
+        <div class="btn-group me-sm-2 mb-2 zindex-popover">
+            <a href="{{ path('admin_agency_new') }}" class="btn btn-dark">
+                <i class="icofont-ui-add me-2 fs-6"></i>Ajouter
+            </a>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>#ID</th>
+                        <th>Agence</th>
+                        <th>Adresse</th>
+                        <th>Nombre d'adhérents</th>
+                        <th>Responsable de l'agence</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for agency in agencies %}
+                    <tr>
+                        <td>{{ agency.id }}</td>
+                        <td><strong>{{ agency.name }}</strong></td>
+
+                        {% for adress in agence_adresses %}
+                            {% if adress.street == "" %}
+                                <td><span class="badge bg-danger"> Aucune adresse </span></td>
+                            {% else %}
+                                {% if agency.id == adress.agence.id %}
+                                    <td>{{ adress.street}} {{adress.postalCode}} {{adress.city}}</td>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% set total = 0 %}
+                        {% for user in users %}
+                            {% if user.agenceadresse_id == agency.id %}
+                                {% for role in user.roles %}
+                                    {% if role == 'ROLE_ADHERANT' %}
+                                        {% set total = total + 1 %} 
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if total == 0 %}
+                            <td><span class="badge bg-danger"> Aucun adhérents </span></td>
+                        {% else %}
+                            <td>{{ total }}</td>
+                        {% endif %}
+
+
+                        <td><span class="badge bg-danger"> Aucun responsable </span></td>
+                        <td>
+                            <a href="{{ path('admin_agency_edit', {'id': agency.id}) }}" class="btn btn-dark btn-sm"><i class="fa fa-edit"></i> Modifier</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5">Aucune agence</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {{ knp_pagination_render(agencies) }}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

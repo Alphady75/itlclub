@@ -1,0 +1,136 @@
+{{ form_start(registrationForm, {'attr': {'id': 'registration_form'}}) }}
+
+{% for flashError in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+{% endfor %}
+<p class="lead">Pour devenir partenaire il vous suffit de remplir le formulaire ci dessous.</p>
+
+<legend class="h5 font-weight-bold pb-4">1 - Informations du partenaire</legend>
+
+<div class="row">
+    <div class="col-md-2"><label><strong>Prénom<span class="text-danger">*</span></strong></label></div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.lastname) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2"><label><strong>Nom<span class="text-danger">*</span></strong></label></div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.name) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label for="conseiller"><strong>Téléphone<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.telephone) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label><strong>Mail<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.company_email) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label for="conseiller"><strong>Adresse postale<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.postaladresse) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label for=""><strong>Ville<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.ville) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label for="conseiller p-md-0"><strong>Code postale<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.postalcode) }}
+    </div>
+</div>
+
+<legend class="h5 font-weight-bold pb-4">2 - Information générales de l'entreprise</legend>
+
+<div class="row">
+    <div class="col-md-2">
+        <label for="conseiller"><strong>Nom de la société<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.societe) }}
+
+        {{ form_row(registrationForm.salaries) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label for="conseiller"><strong>Conseiller<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.conseiller) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label for="conseiller"><strong>N° de SIRET<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.numsiret) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <label><strong>Comptoir<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5">
+        {{ form_row(registrationForm.agency) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2 pr-0">
+        <label><strong>Choix de l'agence<span class="text-danger">*</span></strong></label>
+    </div>
+    <div class="col-md-5 pl-md-0">
+        {{ form_row(registrationForm.agenceadresse) }}
+    </div>
+</div>
+
+<legend class="h5 font-weight-bold pb-4">3 – Création du compte Intellia</legend>
+
+<div class="row">
+    <div class="col-md-5 offset-md-2">
+        <label><i class="fa fa-user"></i> <strong>Adresse e-mail<span class="text-danger">*</span></strong></label>
+        {{ form_row(registrationForm.email) }}
+
+        <label><i class="fa fa-key"></i> <strong>Mot de passe<span class="text-danger">*</span></strong></label>
+
+        {{ form_row(registrationForm.plainPassword) }}
+
+        <div class="form-group pt-4 pb-4">
+            <button class="btn mb-3 rounded-0 btn-danger text-light" type="reset">Effacer</button>
+            <button class="btn rounded-0 mb-3 btn-primary" type="submit">Enregistrer</button>
+        </div>
+    </div>
+</div>
+
+{{ form_end(registrationForm) }}

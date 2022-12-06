@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+
+    <div class="row">
+        <div class="col-md-4">{{ form_row(form.commercial) }}</div>
+        <div class="col-md-4">{{ form_row(form.company) }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <p>Pour des raisons de contrôle, la carte CLUB Intellia n'est accessible qu'à 3 personnes pouvant la détenir. Il vous suffit pour ça de les renseigner ci-après.</p>
+            
+            {{ form_row(form.authorizedPerson1) }}
+
+            {{ form_row(form.authorizedPerson2) }}
+
+            {{ form_row(form.authorizedPerson3) }}
+
+            {{ form_row(form.banqueName) }}
+
+            {{ form_row(form.iban) }}
+
+            {{ form_row(form.bic) }}
+
+            {{ form_rest(form) }}
+
+        </div>
+    </div>
+    
+
+    <button class="btn btn-primary mb-3">{{ button_label|default('Enregistrer') }}</button>
+
+{{ form_end(form) }}

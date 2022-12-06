@@ -1,0 +1,16 @@
+<div style="">
+    <h1>Nouveau Message</h1>
+    
+    <p>Destinataire: <a href="mailto: {{ mail }}">{{ mail }}</a></p>
+    
+    <p>Nom: <strong>{{ name }}</strong></p>
+    <p>Prénom: {{ lastname }}</p>
+    <p>Téléphone: {{ telephone }}</p>
+    <p>Je souhaite être contacté par : <br>
+        {% for typecontact in contactedBy %}
+            * {{ typecontact }} <br>
+        {% endfor %}
+    </p>
+    
+    <p>Intéret de devenir partenaire: {{ partenaireInteret|raw }}</p>
+</div>

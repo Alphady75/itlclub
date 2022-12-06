@@ -1,0 +1,18 @@
+.text-light th{
+	color: white!important;
+}
+.form-group{
+	margin-bottom: 10px;
+}
+.form-group label{
+	font-weight: bold!important;
+}
+.turbo-progress-bar {
+  height: 3px;
+  background-color: #b62961!important;
+  box-shadow: 10px 15px 18px rgba(23, 23, 36, 0.15);
+}
+.vich-image img{
+	display: block;
+	margin-top: 15px!important;
+}

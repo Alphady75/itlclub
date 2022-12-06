@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion - {{ appName }}{% endblock %}
+
+{% block body %}
+<!-- ACCOMPAGNEMENT SECTION -->
+<section class="primary-bg costom-padding cover-bg-no-repeat" style="background-image: url('{{ asset('themes/front/assets/img/core/WAVE_BACKGROUND.png') }}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+
+                <div class="p-5 login-form border rounded bg-white mt-5 shadow">
+                    {{ include('security/login_form.html.twig') }}
+                </div>
+                 
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ACCOMPAGNEMENT SECTION -->
+{% endblock %}
+
+{% block footer %}{% endblock %}

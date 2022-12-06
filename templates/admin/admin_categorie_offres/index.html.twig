@@ -1,0 +1,50 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Catégories d'offres{% endblock %}
+
+{% block body %}
+<div class="card shadow-sm">
+ <div class="card-header py-3">
+    <h6 class="mb-0 fw-bold ">Catégories d'offres <span class="badge bg-primary">{{ categorie_offres|length }}</span></h6>
+</div>
+<div class="card-body">
+    <div class="table-opration">
+        <div class="btn-group me-sm-2 mb-2 zindex-popover">
+            <a href="{{ path('admin_categorie_offres_new') }}" class="btn btn-dark">
+                <i class="icofont-ui-add me-2 fs-6"></i>Ajouter
+            </a>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Slug</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for categorie_offre in categorie_offres %}
+                    <tr>
+                        <td>{{ categorie_offre.id }}</td>
+                        <td>{{ categorie_offre.name }}</td>
+                        <td>{{ categorie_offre.slug }}</td>
+                        <td>
+                            <a href="{{ path('admin_categorie_offres_edit', {'id': categorie_offre.id}) }}" class="btn btn-primary">
+                                <i class="fa fa-edit"></i> Modifier
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Aucune catégorie</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

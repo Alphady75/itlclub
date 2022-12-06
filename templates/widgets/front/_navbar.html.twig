@@ -1,0 +1,55 @@
+<!-- START NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-dark">
+	<div class="container align-items-center">
+		<!-- Brand -->
+		<a class="navbar-brand" href="{{ path('app_home') }}"><img src="{{ asset('themes/front/assets/img/logo.png') }}"></a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav mx-auto justify-content-center">
+				<li class="nav-item">
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'app_home' ? 'active' : '' }}" href="{{ path('app_home') }}">Le concept</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'app_register' ? 'active' : '' }}" href="{{ path('app_register') }}">S'inscrire</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'app_offres' ? 'active' : '' }}" href="{{ path('app_offres') }}">Les offres</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'app_faq' ? 'active' : '' }}" href="{{ path('app_faq') }}">Faq</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="tel:04 65 27 06 60">04 65 27 06 60</a>
+				</li>
+				{% if app.user %}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+						<i class="fa fa-user" style="font-size: 1.5em;"></i> {{ app.user.lastname }}
+					</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="{{ path('app_user_profil') }}">Votre compte</a>
+        				{% if 'ROLE_ADMIN' in app.user.roles %}
+    						<a class="dropdown-item" href="{{ path('admin_dashboard') }}">Administration</a>
+        				{% endif %}
+						<div class="dropdown-divider"></div> 
+						<a class="dropdown-item text-danger" href="{{ path('app_logout') }}"><i class="fa fa-power-off"></i> Déconnexion</a>
+					</div>
+				</li>
+				{% else %}
+				<li class="nav-item dropdown">
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'app_login' ? 'active' : '' }}" href="{{ path('app_user_profil') }}">
+						<i class="fa fa-user-lock" style="font-size: 1.5em;"></i>
+					</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav> 
+<!-- END NAVBAR -->

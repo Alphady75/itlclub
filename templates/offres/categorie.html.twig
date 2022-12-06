@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ appName }} offres {{ categorie.name }}{% endblock %}
+
+{% block signature %}{% endblock %}
+
+{% block body %}
+<!-- BANNER SECTION -->
+<section class="banner-section-small cover-bg-no-repeat" style="background-image: url('{{ asset('themes/front/assets/img/core/concept.png') }}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 mx-auto">
+                <div class="caption">
+                    <h1>Offres : {{ categorie.name }}</h1>
+                    <p>Le Club Intellia se veut exclusif, c’est la raison pour laquelle nous sélectionnons nos partenaires selon des critères bien spécifiques. Retrouvez, consultez et commandez à partir d’ici l’ensemble des offres, services et avantages que proposent nos partenaires.</p>
+                </div>
+            </div>
+        </div>
+
+        {{ include('offres/_search_form.html.twig') }}
+        
+    </div>
+</section>
+
+{{ include('offres/_section.html.twig') }}
+
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('themes/front/assets/js/jquery-1.12.4.min.js') }}"></script>
+{{ parent() }}
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Offres{% endblock %}
+
+{% block body %}
+<div class="card shadow-sm">
+   <div class="card-header py-3">
+    <h6 class="mb-0 fw-bold ">Offres <span class="badge bg-primary">{{ offres.getTotalItemCount }}</span></h6>
+</div>
+<div class="card-body">
+    <div class="table-opration">
+        <div class="btn-group me-sm-2 mb-2 zindex-popover">
+            <a href="{{ path('admin_offres_new') }}" class="btn btn-dark ml-auto">
+                <i class="icofont-ui-add me-2 fs-6"></i>Ajouter
+            </a>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover w-100">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>#ID</th>
+                        <th>Image</th>
+                        <th>Titre</th>
+                        <th>Slug (URL)</th>
+                        <th>Accessibilité</th>
+                        <th>Date création</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for offre in offres %}
+                    <tr>
+                        <td>{{ offre.id }}</td>
+                        <td>
+                            {% if offre.imageName %}
+                                <img src="{{ vich_uploader_asset(offre) | imagine_filter('medium_avatar') }}" class="img-fluid rounded" alt="image" />
+                            {% endif %}
+                        </td>
+                        <td><strong>{{ offre.name|u.truncate(30, '...') }}</strong></td>
+                        <td>{{ offre.slug|u.truncate(30, '...') }}</td>
+                        <td><span class="badge badge-sm bg-{{ offre.visibility ? 'success' : 'secondary' }}"><i class="fa fa-{{ offre.visibility ? 'lock-open' : 'lock' }}"></i> {{ offre.visibility ? 'Public' : 'Privée' }}</span></td>
+                        <td>{{ offre.created|date('d/m/Y') }}</td>
+                        <td>
+                            <a href="{{ path('admin_offres_edit', {'id': offre.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6">Aucune offres</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {{ knp_pagination_render(offres) }}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

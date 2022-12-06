@@ -1,0 +1,70 @@
+<!-- BANNER SECTION --><!-- START PORTFOLIO -->
+<section id="portfolio" class="our_portfolio section-padding">
+	<div class="container">                             
+		<div class="col-lg-12 text-center">
+			<div class="portfolio_filter">
+				<ul>
+					<li class="{{ app.request.attributes.get('_route') == 'app_offres' ? 'active' : '' }} filter" data-filter="all">
+						<a href="{{ path('app_offres') }}">Tout</a>
+					</li>
+
+					{% if app.request.attributes.get('_route') == 'app_offres' %}
+						{% for categorie in categories %}
+							<li class="filter" data-filter=".{{ categorie.slug }}">
+								<a href="{{ path('app_offres_categorie', {categorieslug: categorie.slug}) }}">{{ categorie.name }}</a>
+							</li>
+						{% endfor %}
+					{% else %}
+						{% for autrecategorie in categories %}
+							<li class="filter {{ autrecategorie == categorie ? 'active text-light' : '' }}" data-filter=".{{ categorie.slug }}">
+								<a href="{{ path('app_offres_categorie', {categorieslug: autrecategorie.slug}) }}">{{ autrecategorie.name }}</a>
+							</li>
+						{% endfor %}
+					{% endif %}
+				</ul>
+			</div>
+		</div>              
+		<div class="row portfolio_item">
+
+			{% for offre in offres %}                  
+			<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 wow fadeInUp d-flex align-content-stretch {{ offre.categorieoffre.slug }}" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+				<div class="single_blog text-light mb-3 primary-bg w-100 shadow">
+
+					<a href="{{ path('app_offres_detail', {slug: offre.slug}) }}">
+						<div class="offer_img" style="background-image: url('{{ offre.imageName ? vich_uploader_asset(offre) | imagine_filter('midle_size') : '' }}');background-size: cover;background-position: center;height: 250px;display: block;width: 100%;position: relative;">
+							<div class="triangle">
+								{% if offre.company %}
+
+									{% if offre.company.picture %}
+
+									<img src="{{ vich_uploader_asset(offre.company) | imagine_filter('very_small_avatar') }}" style="width: 30px; height: auto; position: absolute; left: 60%; top: 10%;">
+
+									{% endif %}
+
+								{% endif %}
+							</div>                        
+						</div>
+					</a>
+
+					<div class="primary-bg p-3">
+						<h3 class="text-light text-center"><a href="{{ path('app_offres_detail', {slug: offre.slug}) }}" class="text-light">{{ offre.name }}</a></h3>
+						<p class="p-0 text-center">{{ offre.description|u.truncate(90, '...') }}</p>
+					</div>
+				</div>
+			</div>
+			{% else %}
+			<div class="col-12">
+				<p class="lead text-center">Aucune offres disponible pour l'instant...</p>
+			</div>
+			{% endfor %}
+
+		</div><!--- END ROW -->
+
+		<div class="row mt-4">
+			<div class="col-md-12">
+				{{ knp_pagination_render(offres) }} 
+			</div>
+		</div>
+	</div><!--- END CONTAINER -->
+</section>
+<!-- END PORTFOLIO -->  

@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Agence Adresses{% endblock %}
+
+{% block body %}
+<div class="card shadow-sm">
+   <div class="card-header py-3">
+    <h6 class="mb-0 fw-bold ">Agence adresses <span class="badge bg-primary">{{ agence_adresses|length }}</span></h6>
+</div>
+<div class="card-body">
+    <div class="table-opration">
+        <div class="btn-group me-sm-2 mb-2 zindex-popover">
+            <a href="{{ path('admin_agence_adress_new') }}" class="btn btn-dark float-right">
+                <i class="icofont-ui-add me-2 fs-6"></i>Ajouter 
+            </a>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Numéro</th>
+                        <th>Ruelle/Avenue</th>
+                        <th>Code postal</th>
+                        <th>Ville</th>
+                        <th>Date création</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for agence_adress in agence_adresses %}
+                    <tr>
+                        <td>{{ agence_adress.id }}</td>
+                        <td>{{ agence_adress.number }}</td>
+                        <td>{{ agence_adress.street }}</td>
+                        <td>{{ agence_adress.postalCode }}</td>
+                        <td>{{ agence_adress.city }}</td>
+                        <td>{{ agence_adress.created ? agence_adress.created|date('Y-m-d H:i:s') : '' }}</td>
+                        <td>
+                            <a href="{{ path('admin_agence_adress_edit', {'id': agence_adress.id}) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="8">Aucune adresse disponible</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

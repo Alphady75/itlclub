@@ -1,0 +1,80 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+<div class="row clearfix row-deck g-3">
+    <div class="col-lg-8 col-md-12 flex-column">
+
+        <div class="row g-3 mb-3">
+            <div class="col-md-4">
+                <a href="{{ path('app_admin_compte_commerciaux') }}" class="card color-bg-200 fw-bold">
+                    <div class="card-body text-primary text-center">
+                        <i class="fa fa-user-circle fa-4x"></i>
+                        <h6 class="mt-3 lead mb-0">Commerciaux</h6>
+                        <span class="text-primary h2">{{ commerciaux|length }}</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('admin_user_index') }}" class="card color-bg-200 fw-bold">
+                    <div class="card-body text-primary text-center">
+                        <i class="fa fa-user-tie fa-4x"></i>
+                        <h6 class="mt-3 lead mb-0">Adhérents</h6>
+                        <span class="text-primary h2">{{ users|length }}</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('admin_partenaires_index') }}" class="card color-bg-200 fw-bold">
+                    <div class="card-body text-primary text-center">
+                        <i class="fa fa-handshake fa-4x"></i>
+                        <h6 class="mt-3 lead mb-0">Partenaires</h6>
+                        <span class="text-primary h2">{{ partenaires|length }}</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('admin_demande_index') }}" class="card color-bg-200 fw-bold">
+                    <div class="card-body text-primary text-center">
+                        <i class="icofont-folder-open fa-4x"></i>
+                        <h6 class="mt-3 lead mb-0">Demandes</h6>
+                        <span class="text-primary h2">{{ demandes|length }}</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('admin_company_index') }}" class="card color-bg-200 fw-bold">
+                    <div class="card-body text-primary text-center">
+                        <i class="fa fa-store-alt fa-4x"></i>
+                        <h6 class="mt-3 lead mb-0">Sociétés</h6>
+                        <span class="text-primary h2">{{ companies|length }}</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('admin_offres_index') }}" class="card color-bg-200 fw-bold">
+                    <div class="card-body text-primary text-center">
+                        <i class="icofont-money fa-4x"></i>
+                        <h6 class="mt-3 lead mb-0">Offres</h6>
+                        <span class="text-primary h2">{{ offres|length }}</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="{{ path('admin_agency_index') }}" class="card color-bg-200 fw-bold">
+                    <div class="card-body text-primary text-center">
+                        <i class="icofont-home fa-4x"></i>
+                        <h6 class="mt-3 lead mb-0">Agences</h6>
+                        <span class="text-primary h2">{{ agencies|length }}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        {{ include('admin/admin_dashboard/_last_registration.html.twig') }}
+
+    </div>
+    <div class="col-lg-4 col-md-12">
+        {{ include('admin/admin_dashboard/_right_sidebar.html.twig') }}
+    </div>
+</div>
+{% endblock %}

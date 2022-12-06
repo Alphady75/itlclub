@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confidentialité{% endblock %}
+
+{% block body %}
+<section class="user-compt-section costom-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				{% include('user/_sideBare.html.twig') %}
+			</div>
+
+			<div class="col-md-6">
+				<div class="form-input-border label-bold">
+					{{ form_start(form) }}
+						<legend class="font-weight-bold h5"><i class="fa fa-lock"></i> Confidentialité</legend>
+						{{ form_widget(form) }}
+
+						<div class="form-group mt-5 mb-5">
+							<button type="submit" class="btn primary-btn">Envoyer la demande</button>
+							<button type="reset" class="btn primary-btn">Reinitialiser</button>
+						</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	
+{% endblock %}

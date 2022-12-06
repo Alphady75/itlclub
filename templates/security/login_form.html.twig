@@ -1,0 +1,51 @@
+<form method="post" action="{{ path('app_login') }}">
+
+    {% if app.request.attributes.get('_route') == 'app_login' ? 'active' : '' %}
+
+        {% if error %}
+        <div class="alert alert-danger">
+            <!-- error.messageKey|trans(error.messageData, 'security') }}-->
+            Identifiant ou mot de passe incorrect
+        </div>
+        {% endif %}
+
+    {% endif %}
+
+    {% if app.user %}
+    <div class="mb-3">
+        You are logged in as {{ app.user.name }}, <a href="{{ path('app_logout') }}">Logout</a>
+    </div>
+    {% endif %}
+    <label for="inputEmail">Votre adresse mail</label>
+    <div class="input-group mb-3 border rounded">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-transparent border-0"><i class="fa fa-user"></i></span>
+        </div>
+        <input type="email" value="{{ app.request.attributes.get('_route') == 'app_login' ? last_username : '' }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Adresse e-mail..." required autofocus>
+    </div>
+    <label for="inputPassword">Numéro de carte Intellia ou mot de passe personnalisé</label>
+    <div class="input-group mb-3 border rounded">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-transparent border-0"><i class="fa fa-lock"></i></span>
+        </div>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Numéro de carte Intellia ou mot de passe personnalisé..." required>
+    </div>
+    <input type="hidden" name="_csrf_token"
+    value="{{ csrf_token('authenticate') }}"
+    >
+
+    {% if app.request.attributes.get('_route') == 'app_login' ? 'active' : '' %}
+
+    <div class="form-group form-check">
+        <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="_remember_me"> Se souvenir de moi
+        </label>
+    </div>
+
+    {% endif %}
+    <div class="form-group text-center">
+        <button type="submit" class="btn primary-btn text-light rounded-0 btn-block">Connexion</button>
+    </div>
+
+    <a href="{{ path('app_forgot_password_request') }}" class="d-block text-center">Mot de passe oublié ? </a>
+</form>

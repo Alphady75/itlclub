@@ -1,0 +1,20 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Changer le document: {{ document.name }}{% endblock %}
+
+{% block body %}
+
+<div class="card shadow-sm">
+
+    <div class="card-header py-3"><h6 class="mb-0 fw-bold">Changer le document : {{ document.name }}</h6></div>
+
+    <div class="card-body">
+
+        {{ include('admin/admin_documents/_form.html.twig', {'button_label': 'Enregistrer les modifications'}) }}
+
+        {{ include('admin/admin_documents/_delete_form.html.twig') }}
+
+    </div>
+    
+</div>
+{% endblock %}

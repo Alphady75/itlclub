@@ -1,0 +1,76 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Partenaires ( {{ companies.getTotalItemCount }} ){% endblock %}
+
+{% block body %}
+<div class="card shadow-sm">
+   <div class="card-header py-3">
+    <h6 class="mb-0 fw-bold ">Sociétés <span class="badge bg-primary">{{ companies.getTotalItemCount }}</span></h6>
+</div>
+<div class="card-body">
+    <div class="table-opration">
+        <div class="btn-group me-sm-2 mb-2 zindex-popover">
+            <a href="{{ path('admin_company_new') }}" class="btn btn-dark">
+                <i class="icofont-ui-add me-2 fs-6"></i> Ajouter
+            </a>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th>Id</th>
+                        <th>Société</th>
+                        <th>Siret</th>
+                        <th>Image</th>
+                        <th>Salariés</th>
+                        <th>Téléphone</th>
+                        <th>Crée le</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for company in companies %}
+                    <tr>
+                        <td>{{ company.id }}</td>
+                        <td>
+                            <strong>{{ company.name }}</strong> <br>
+                            <span class="badge bg-primary">{{ company.email }}</span>
+                        </td>
+                        <td>{{ company.siret }}</td>
+                        <td>
+                            {% if company.picture %}
+                                <a href="{{ path('admin_company_edit', {'id': company.id}) }}" class="text-light"><img src="{{ vich_uploader_asset(company) | imagine_filter('medium_avatar') }}" class="img-fluid" alt="image" /></a>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="badge bg-primary">
+                                {% if company.nbEmployees == 1 %}
+                                    0-4 salaries
+                                {% elseif company.nbEmployees == 2 %}
+                                    5-9 salaries
+                                {% elseif company.nbEmployees == 3 %}
+                                    10 salaries et + 
+                                {% endif %}
+                            </span>
+                        </td>
+                        <td><span class="">{{ company.phoneNumber }}</span></td>
+                        <td>{{ company.created|date('d/m/Y') }}</span></td>
+                        <td>
+                            <a href="{{ path('admin_company_edit', {'id': company.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Modifier</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="8">Aucune compagnie</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {{ knp_pagination_render(companies) }}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

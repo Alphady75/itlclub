@@ -1,0 +1,313 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ appName }} - FAQ{% endblock %}
+
+{% block body %}
+<!-- BANNER SECTION -->
+<section class="banner-section-medium-height cover-bg-no-repeat" style="background-image: url('{{ asset('themes/front/assets/img/core/concept.png') }}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mx-auto">
+                <div class="caption faq">
+                    <h1>Foire aux questions</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- BANNER SECTION -->
+
+<!-- FAQ SECTION -->
+<section class="faq-section costom-padding" style="background-image: url('{{ asset('themes/front/assets/img/core/WAVE_BACKGROUND3.png') }}'); background-position: center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>ADHERENTS</h2>
+                <div id="accordion">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-1">
+                                Je veux adhérer au club intellia comment faire ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-1" class="collapse show" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Deux solutions s’offrent à vous dans ce cas présent. Vous pouvez directement souscrire et  intégrer au club intellia en remplissant le formulaire d’adhésion dans la partie « intégrer le réseau »  de notre site web. Vous pouvez aussi faire une demande d’adhésion directement dans l’une des  12 agences Solipac. (Liste des agences solipac : https://www.solipac.fr/vos-agences.html) </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-2">
+                                Suis-je engagé ?
+                            </a>
+                        </div>
+                        <div id="adhcol-2" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Votre abonnement est sans aucun engagement, il vous suffit de signaler votre envie et nous  restituer votre carte club intellia pour être totalement désabonner. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-3">
+                                Que comprend mon abonnement ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-3" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Votre abonnement comprend l’accès total aux offres, services et avantages et autres prestations  du club intellia. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-4">
+                                J’ai perdu ma carte club, que faire ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-4" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Il est important de signaler la perte de votre carte club. Nous serons ainsi en mesure de geler les  numéros associés à celle-ci et nous vous générerons une autre. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-5">
+                                Puis-je faire profiter de ma carte club à mes proches ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-5" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Votre carte club n’est pas cessible, à l’exception de vos salariés et famille. Un justificatif peut  vous être demandé.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-6">
+                                Sous combien de temps je reçois ma carte club ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-6" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Nous prenons le temps d’examiner votre demande, le délais moyen constaté pour intégrer le club  et recevoir votre carte club, après réception de votre demande, est de 7jours ouvrés</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-7">
+                                Je veux bénéficier d’une offre, service ou avantage, comment faire ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-7" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Deux solutions s’offrent à vous pour bénéficier d’une offre, service ou avantage. Vous pouvez  directement faire votre demande depuis notre site internet www.intellia.club. Vous pouvez aussi  vous rendre directement chez notre partenaire, présenter votre carte et formuler votre demande.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-8">
+                                Comment connaitre le statut de ma demande ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-8" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Un interlocuteur dédié vous informe en temps réel de l’état de votre demande. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-9">
+                                Ma cotisation mensuelle n’est pas à jour, que faire ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-9" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Votre cotisation mensuelle n’est pas à jour, signalez le et régularisez au plus vite votre situation  afin de bénéficier encore de vos droits. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-10">
+                                Que signifie anti RFID et à quoi ça sert ? 
+                            </a>
+                        </div>
+                        <div id="adhcol-10" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Nous avons équipé nos cartes clubs de puces anti RFID, celles-ci protègent votre portefeuille  contre les paiements sans contacts frauduleux. Pour cela nous conseillons donc vivement de  toujours garder votre carte club intellia dans votre portefeuille. Afin de vous rassurer, il n’y a aucun  risque de démagnétisation des autres cartes au contact de la carte club intellia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#adhcol-11">
+                                Je souhaite résilier mon abonnement. 
+                            </a>
+                        </div>
+                        <div id="adhcol-11" class="collapse" data-parent="#accordion">
+                            <div class="card-body">
+                                <p>Pour résilier votre abonnement il vous suffit de signaler cette envie en contactant votre gestionnaire dédié intellia et nous restituer votre carte club intellia pour être totalement désabonné.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> 
+            </div>
+            <div class="col-md-6">
+                <h2>Partenaires</h2>
+                <div id="accordionPart">
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-1">
+                                Je veux devenir partenaire, comment faire ?  
+                            </a>
+                        </div>
+                        <div id="partcol-1" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Deux solutions s’offrent à vous dans ce cas présent. Vous pouvez directement souscrire et  intégrer au club intellia en remplissant le formulaire d’adhésion dans la partie « partenaires » de  notre site web. Vous pouvez aussi faire une demande d’adhésion directement dans l’une des 12  agences Solipac. (Liste des agences solipac : https://www.solipac.fr/vos-agences.html)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-2">
+                                Comment enregistrer un nouvel adhérent ?  
+                            </a>
+                        </div>
+                        <div id="partcol-2" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Un nouvel adhérent se présente à vous en comptoir, il vous suffit de saisir directement depuis  notre site web le formulaire d’adhésion dans la partie « intégrer le réseau » ou bien vous pouvez  remplir un formulaire papier….. suite ?  </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-3">
+                                Suis-je engagé ?   
+                            </a>
+                        </div>
+                        <div id="partcol-3" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Votre abonnement est sans aucun engagement, il vous suffit de signaler votre envie et nous  restituer votre carte club intellia pour être totalement désabonner.  </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-4">
+                                Que comprend mon abonnement ?   
+                            </a>
+                        </div>
+                        <div id="partcol-4" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Votre abonnement comprend ce qui suit :  </p>
+                                <ul>
+                                    <li>Interlocuteur dédié</li>
+                                    <li>Accès à la plateforme de référencement</li>
+                                    <li>Mise en relation directe avec les adhérents </li>
+                                    <li>Marketing digital</li> 
+                                    <li>Opérations de communication</li> 
+                                    <li>Exposition dans les 12 agences Solipac </li>
+                                    <li>Mise en avant exclusive </li>
+                                    <li>Mise à disposition d’une force commerciale</li> 
+                                    <li>Réunions trimestrielles </li>
+                                    <li>Interconnexion avec les autres  partenaires </li>
+                                    <li>Un modèle économique WIN-WIN </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-5">
+                                Je veux mettre mes offres, services et avantages à jour, comment faire ?   
+                            </a>
+                        </div>
+                        <div id="partcol-5" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Pour cela c’est très simple, connectez-vous à votre espace dédié et rajoutez, modifiez ou  supprimez ce que vous souhaité.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-6">
+                                Comment vérifier la validité d’une carte adhérent ?    
+                            </a>
+                        </div>
+                        <div id="partcol-6" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Il vous suffit de scanner le code barre à l’arrière de la carte de l’adhérent directement dans votre  interface SGC. Le statut de l’adhérent s’affichera aussi tot. Si vous n’êtes pas muni d’un scan  code barre, il vous suffit de rentrer les chiffres du code barre pour accéder aux mêmes  informations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-7">
+                                Que faire quand je reçois une demande ?     
+                            </a>
+                        </div>
+                        <div id="partcol-7" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Lorsque vous recevez une demande, nous vous demandons de la traiter le plus vite possible afin  de garantir une expérience maximale à nos adhérents. </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-8">
+                                Ma cotisation mensuelle n’est pas à jour, que faire ?      
+                            </a>
+                        </div>
+                        <div id="partcol-8" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Votre cotisation mensuelle n’est pas à jour, signalez le et régularisez au plus vite votre situation  afin de bénéficier encore de vos droits</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <a class="card-link" data-toggle="collapse" href="#partcol-9">
+                                Je souhaite résilier mon abonnement.      
+                            </a>
+                        </div>
+                        <div id="partcol-9" class="collapse" data-parent="#accordionPart">
+                            <div class="card-body">
+                                <p>Pour résilier votre abonnement il vous suffit de signaler cette envie en contactant votre gestionnaire dédié intellia.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FAQ SECTION -->
+{% endblock %}

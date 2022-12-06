@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre compte {{ app.user.lastname }}{% endblock %}
+
+{% block body %}
+<section class="user-compt-section costom-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				{% include('user/_sideBare.html.twig') %}
+			</div>
+
+
+			<div class="col-md-6">
+
+
+				<div class="form-input-border label-bold">
+					{{ form_start(form) }}
+						<legend class="font-weight-bold h5"><i class="fa fa-user"></i> Compte</legend>
+						<img src="{{ asset('themes/front/assets/img/carteadherent.png') }}"  class="">
+						<h1 style= "font-size:150%" class="display-1 badge bg-{{ user.validateNumCompte ? 'success' : 'danger'  }}">    {{ user.NumeroCompte ?? 'Aucun numéro' }}</h1>
+						<button class="btn primary-btn">Générer PDF</button>
+						<div class="form-group">
+							<label>Adresse e-mail</label>
+							<div class="border rounded bg-light p-2">
+								<strong>{{ app.user.email }}</strong>
+							</div>
+							<span>Pour des raisons de sécurité, nous n'acceptons pas la modification de l'adresse e-mail</span>
+						</div>
+						{{ form_widget(form) }}
+						<div class="form-group mt-5 mb-5">
+							<button type="submit" class="btn primary-btn">Mettre à jour votre compte</button>
+						</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	
+{% endblock %}

@@ -1,0 +1,28 @@
+{% if carte %}
+
+<div class="border rounded font-weight-bold p-4 mb-4">
+
+	<p class="text-success"> <i class="fa fa-check"></i>
+		Le numéro de carte <span class="badge bg-dark">{{ query }}</span> est attribué à l'adhérent :
+	</p>
+
+	<div class="media">
+		<img src="{{ asset('img/user.jpg') }}" width="100">
+		<div class="media-body mt-3">
+			<strong>{{ carte.lastname ~ ' ' ~ carte.name }}</strong> <br>
+			<span>{{ carte.email }}</span>
+			<p class="p-0">Numéro de carte: <span class="badge bg-dark">{{ carte.numeroCompte }}</span></p>
+		</div>
+		
+	</div>
+</div>
+
+{% endif %}
+
+{% if confirm %}
+
+<div class="border rounded p-4 font-weight-bold mb-4">
+	<p class="text-danger"><i class="fa fa-exclamation-triangle"></i> Le numéro de compte <span class="badge bg-dark">{{ query }}</span> n'a été attribué à aucun adhérent!</p>
+</div>
+
+{% endif %}

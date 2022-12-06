@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vérifier votre numéro de carte{% endblock %}
+
+{% block body %}
+<section class="user-compt-section costom-padding">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+
+				{% include('user/_sideBare.html.twig') %}
+				
+			</div>
+
+			<div class="col-md-6">
+
+				<div class="form-input-border label-bold">
+					{{ form_start(form) }}
+						<legend class="font-weight-bold h5"><i class="fa fa-id-card"></i> Vérifier votre numéro de carte</legend>
+
+						{% if carte %}
+
+							<div class="border rounded font-weight-bold p-4">
+								{% if app.user.numeroCompte %}
+
+									{% if carte.numeroCompte == app.user.numeroCompte %}
+										<div>
+											<p class="text-{{ carte.validateNumCompte ? 'success' : 'danger' }}">{{ carte.validateNumCompte ? 'Félicitation votre numéro de carte' : 'Désolé vous avez un numéro de carte' }}  
+												<span class="badge text-light bg-{{ carte.validateNumCompte ? 'primary' : 'danger' }}">{{ query }}</span> 
+												 
+											{{ carte.validateNumCompte ? 'est valide' : ', mais il est n\'est pas encore activé' }}</p>
+										</div>
+									{% else %}
+										<div>
+											<p class="text-danger"><i class="fa fa-exclamation-triangle"></i> Numéro de carte invalide!</p>
+										</div>
+									{% endif %}									
+
+								{% else %}
+									<p class="text-warning"><i class="fa fa-exclamation-triangle"></i> Vous n'avez pas encore de numéro de carte</p>
+								{% endif %}
+
+								
+							</div>
+							
+						{% endif %}
+
+						{% if confirm == "Not-found" %}
+							<div class="border rounded font-weight-bold p-4">
+								<p class="text-danger"><i class="fa fa-exclamation-triangle"></i>Le Numéro de carte <span class="badge text-light bg-primary">{{ query }}</span> est invalide!</p>
+							</div>
+						{% endif %}
+
+						<label>Numéro de carte</label>
+						{{ form_row(form.numeroCompte) }}
+
+						<div class="form-group mt-5 mb-5">
+							<button class="btn primary-btn">Vérifier votre numéro de carte</button>
+						</div>
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	
+{% endblock %}

@@ -1,0 +1,261 @@
+{{ form_start(registrationForm, {'attr': {'id': 'registration_form'}}) }}
+<legend class="form-title">Formulaire d'adhésion</legend>
+
+{% for flashError in app.flashes('verify_email_error') %}
+<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+{% endfor %}
+
+<p class="text-center">Pour devenir adhérent il vous suffit de remplir le formulaire ci dessous.</p>
+<div class="text-center">
+    <p class="p-0 m-0">Celui-ci créera : </p>
+    <ul class="mb-3">
+        <li>votre contrat</li>
+        <li>votre compte client</li>
+    </ul>
+</div>
+
+<div class="my-custom-class-for-errors">
+    {{ form_errors(registrationForm) }}
+</div>
+
+<fieldset>
+    <legend>1 – Informations comptoir</legend>
+    <div class="row">
+        <div class="col-md-1">
+            <label>Conseiller</label>
+        </div>
+        <div class="col-md-3">
+            {{ form_row(registrationForm.conseiller) }}
+        </div>
+        <div class="col-md-1">
+            <label>Comptoir</label>
+        </div>
+        <div class="col-md-2">
+            {{ form_row(registrationForm.agency) }}
+        </div>
+        <div class="col-md-2">
+            <label>Choix de l'agence</label>
+        </div>
+        <div class="col-md-3">
+            {{ form_row(registrationForm.agenceadresse) }}
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>2 – Informations générales débiteur</legend>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="conseiller">Nom de la société</label>
+        </div>
+        <div class="col-md-4">
+            {{ form_row(registrationForm.societe) }}
+        </div>
+        <div class="col-md-2">
+            <label for="conseiller">Numéro SIRET</label>
+        </div>
+        <div class="col-md-4">
+            {{ form_row(registrationForm.numsiret) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="conseiller">Adresse postale</label>
+        </div>
+        <div class="col-md-4">
+            {{ form_row(registrationForm.postaladresse) }}
+        </div>
+        <div class="col-md-2">
+            <label for="conseiller p-md-0">Code postale</label>
+        </div>
+        <div class="col-md-1 p-md-0">
+            {{ form_row(registrationForm.postalcode) }}
+        </div>
+        <div class="col-md-1">
+            <label for="">Ville</label>
+        </div>
+        <div class="col-md-2">
+            {{ form_row(registrationForm.ville) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label for="conseiller" class="d-block">Salariés</label>
+        </div>
+        <div class="col-md-4">
+            {{ form_row(registrationForm.salaries) }}
+        </div>
+    </div>
+</fieldset>
+
+<fieldset>
+
+    <legend>3 – Création du compte Intellia</legend>
+
+    <div class="row">
+        <div class="col-md-1"><label>Prénom</label></div>
+        <div class="col-md-5">
+            {{ form_row(registrationForm.lastname) }}
+        </div>
+        <div class="col-md-1"><label>Nom</label></div>
+        <div class="col-md-5">
+            {{ form_row(registrationForm.name) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+            <label for="conseiller">Téléphone</label>
+        </div>
+        <div class="col-md-5">
+            {{ form_row(registrationForm.telephone) }}
+        </div>
+        <div class="col-md-1">
+            <label>Mail</label>
+        </div>
+        <div class="col-md-5">
+            {{ form_row(registrationForm.email) }}
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-2">
+            <label>Mot de passe</label>
+        </div>
+        <div class="col-md-4 inline-form">
+            {{ form_row(registrationForm.plainPassword) }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <p>Pour des raisons de contrôle, la carte CLUB Intellia n'est cessible qu'à 3 personnes pouvant la détenir. Il vous suffit pour ça de les renseigner ci-après.</p>
+        </div>
+        <div class="col-md-6 auth-person">
+            <div class="border authpersonne">
+                {{ form_row(registrationForm.authpersonne_1) }}
+                {{ form_row(registrationForm.authpersonne_2) }}
+                {{ form_row(registrationForm.authpersonne_3) }}
+            </div>
+        </div>
+    </div>
+
+</fieldset>
+
+<fieldset>
+    <legend>4 – Informations bancaires</legend>
+    <div class="row">
+        <div class="col-md-2">
+            <label>Nom de la banque</label>
+        </div>
+        <div class="col-md-3">
+            {{ form_row(registrationForm.banque) }}
+        </div>
+        <div class="col-md-1">
+            <label>IBAN</label>
+        </div>
+        <div class="col-md-3">
+            {{ form_row(registrationForm.iban) }}
+        </div>
+        <div class="col-md-1">
+            <label>BIC</label>
+        </div>
+        <div class="col-md-2">
+            {{ form_row(registrationForm.bic) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label>Frais d'activation de la carte <span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-7">
+            {{ form_row(registrationForm.fraiActivationCart) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label class="">Conditions générales de vente <span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-7">
+            {{ form_row(registrationForm.agreeTerms, {label: "J'accepte les conditions générales du contrat. J'accepte que mes données personnelles (prénom, nom, mail, téléphone) soient utilisées pour me joindre en cas de besoin."}) }}
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Test d'éligibilité à la décennale photovoltaïque</h4>
+            {{ form_row(registrationForm.eligibilite) }}
+        </div>
+    </div>
+</fieldset>
+<br class="primary-bg">
+
+<fieldset>
+    <legend>5- Téléverser les informations complémentaires</legend>
+    <div class="row">
+        <div class="col-md-2">
+            <label>RIB <span class="text-danger">*</span></label>
+        </div>
+        <div class="col-md-4">
+            {{ form_row(registrationForm.ribFile) }}
+        </div>
+        <div class="col-md-2">
+            <label>Carte d'identité</label>
+        </div>
+        <div class="col-md-4">
+            {{ form_row(registrationForm.cniFile) }}
+        </div>
+    </div>
+    <legend>Signature</legend>
+    <div class="row">
+        <div class="col-md-3">
+
+            {{ form_row(registrationForm.signature) }}
+
+            {{ form_errors(registrationForm.signature) }}
+
+            <div id="sig">
+                <canvas></canvas>
+            </div>
+            <button id="clear" class="btn btn-light border btn-sm">Effacer la signature</button>
+            
+        </div>
+    </div>
+</fieldset>
+
+<div class="form-group pt-4 pb-4">
+    <button class="btn primary-btn-outline rounded-0 mb-3" type="reset">Effacer</button>
+    <button class="btn primary-btn rounded-0 mb-3" type="submit" formnovalidate>Souscrire l'abonnement</button>
+</div>
+{{ form_end(registrationForm) }}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+<script type="text/javascript">
+
+    const canvas = document.querySelector("canvas");
+
+    const signaturePad = new SignaturePad(canvas);
+
+    $('#clear').click(function (e) {
+        e.preventDefault();
+        signaturePad.clear();
+    })
+
+    var form = document.getElementById('registration_form');
+
+    //Submit form
+    form.addEventListener('submit', function(event) {
+
+        event.preventDefault();
+
+        var image_url = signaturePad.toDataURL();
+
+        $('#registration_form_signature').val(image_url);
+
+        form.submit();
+    });
+
+</script>
+
+{% endblock %}

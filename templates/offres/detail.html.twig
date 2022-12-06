@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ offre.name }} {% endblock %}
+
+{% block body %}
+<section class="offert-details-section cover-bg costom-padding" style="background-image: url('assets/img/core/WAVE_BACKGROUND3.pn');">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				{% if offre.company %}
+					{% if offre.company.picture %}
+					<div>
+						<img src="{{ vich_uploader_asset(offre.company) | imagine_filter('large_size') }}" class="rounded img-fluid" alt="{{ offre.company.name }}" />
+					</div>
+					{% endif %}
+				{% endif %}
+
+				{% if app.user %}
+
+					{% if offre.company %}
+
+					<div>
+						<h2 class="text-primary pt-4">{{ offre.company.name }}</h2>
+
+						<strong class="d-block">{{ offre.company.user.lastname }} {{ offre.company.user.name }}</strong>
+
+						<p><i class="fa fa-phone text-primary mr-3"></i>{{ offre.company.phoneNumber }}</p>
+
+						<p><i class="ti-email f_email text-primary mr-3"></i>{{ offre.company.email }}</p>
+
+						{% if offre.company.agenceadresse %}
+
+						<p><i class="fa fa-map-marker-alt mr-3 text-primary"></i>{{ offre.company.agenceadresse.number }} {{ offre.company.agenceadresse.street }}</p>
+
+						{% endif %}
+
+						<h4>Documents à télécharger</h4>
+						<div class="mt-3 p-3 bg-light">
+							{% for document in offre.company.documents %}
+								<a href="{{ vich_uploader_asset(document) }}" target="_blank">{{ document.name }}</a>
+							{% endfor %}
+						</div>
+					</div>
+
+					{% endif %}
+
+				{% endif %}
+			</div>
+			<div class="col-md-8">
+				<div>
+					<h1>{{ offre.name }}</h1>
+
+					<div>
+						{{ offre.contenu|raw }}
+					</div>
+
+					<hr>
+
+					{% if app.user %}
+
+						{% if offre.company %}
+
+						<div class="row">
+							<div class="col-md-4">
+								<h4 class="pt-3 text-black">Notre métier</h4>
+							</div>
+							<div class="col-md-8">
+								{{ offre.company.metier|raw }}
+							</div>
+						</div>
+						<hr>
+						<div class="">
+							<h4 class="pb-3 text-black">Nos services</h4>
+
+							{{ offre.company.services|raw  }}
+						</div>
+
+						{% if offre.partenaireInfoVisibility %}
+							<div class="">
+								<h4 class="pb-4 pt-4 text-black">Pour vous adhérents</h4>
+								<div class="row text-light">
+									<div class="col-md-6">
+										<div class="bg-primary rounded p-3 h-100">
+											{{ offre.partenaireInfo1 ?? '' }}
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="bg-primary rounded p-3 h-100">
+											{{ offre.partenaireInfo2 ?? '' }}
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+						{% endif %}
+
+					{% else %}
+
+						<div class="register-section detail">
+
+							{{ include('security/login_form.html.twig') }}
+
+							<h4>Vous n'êtes pas adhérent ? </h4>
+
+							<p>
+
+								Il est important d’être adhérent du club Intellia car les offres et les services obtenus par nos partenaires sont exclusifs.
+
+								Le club Intellia a travaillé à sélectionner des partenaires de qualité afin que vous soyez accompagnés par des partenaires.
+							</p>
+
+							<a href="{{ path('app_register') }}" class="btn primary-btn">Devenir adhérent</a>
+						</div>
+
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

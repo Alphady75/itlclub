@@ -1,0 +1,337 @@
+{{ form_start(registrationForm, {'attr': {'id': 'registration_form'}}) }}
+
+<fieldset class="border rounded p-3 mb-4">
+	<legend class="form-title text-center">Formulaire d'adhésion</legend>
+
+	{% for flashError in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+	{% endfor %}
+	<div class="row">
+		<div class="col-md-5 mx-auto">
+			<p class="lead">Pour devenir adhérent il vous suffit de remplir le formulaire ci dessous.</p>
+			<p class="p-0 m-0 lead">Celui-ci créera :
+			</p>
+			<ul class="mb-3">
+				<li class="font-weight-bold">* votre contrat et</li>
+				<li class="font-weight-bold">* votre compte client</li>
+			</ul>
+		</div>
+	</div>
+</fieldset>
+
+<fieldset class="border rounded p-3 mb-4">
+	<legend>1-Informations générales débiteur</legend>
+	<div class="row">
+		<div class="col-md-2">
+			<label for="conseiller">
+				<strong>Nom de la société<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-4">
+			{{ form_row(registrationForm.societe) }}
+		</div>
+		<div class="col-md-2">
+			<label for="conseiller">
+				<strong>N° de SIRET<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-4">
+			{{ form_row(registrationForm.numsiret) }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-1">
+			<label>
+				<strong>Prénom<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-5">
+			{{ form_row(registrationForm.lastname) }}
+		</div>
+		<div class="col-md-1">
+			<label>
+				<strong>Nom<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-5">
+			{{ form_row(registrationForm.name) }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-1">
+			<label for="conseiller">
+				<strong>Téléphone<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-5">
+			{{ form_row(registrationForm.telephone) }}
+		</div>
+		<div class="col-md-1">
+			<label>
+				<strong>Mail<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-5">
+			{{ form_row(registrationForm.company_email) }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-2">
+			<label for="conseiller">
+				<strong>Adresse postale<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-10">
+			{{ form_row(registrationForm.postaladresse) }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-1">
+			<label for="">
+				<strong>Ville<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-5">
+			{{ form_row(registrationForm.ville) }}
+		</div>
+		<div class="col-md-2">
+			<label for="conseiller p-md-0">
+				<strong>Code postale<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-4">
+			{{ form_row(registrationForm.postalcode) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1">
+			<label>
+				<strong>commercial</strong>
+			</label>
+		</div>
+		<div class="col-md-5">
+			{{ form_row(registrationForm.commercial) }}
+		</div>
+	</div>
+
+</fieldset>
+
+<fieldset class="border rounded p-3 mb-4">
+	<legend>2 - Informations Bancaires</legend>
+	<div class="row">
+		<div class="col-md-1">
+			<label>
+				<strong>IBAN<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-5">{{ form_row(registrationForm.iban) }}</div>
+		<div class="col-md-1">
+			<label>
+				<strong>BIC<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-5">{{ form_row(registrationForm.bic) }}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2">
+			<label>
+				<strong>Nom de la Banque<span class="text-danger">*</span>
+				</strong>
+			</label>
+		</div>
+		<div class="col-md-4">{{ form_row(registrationForm.banque) }}</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<label>Frais d'activation de la carte
+				<span class="text-danger">*</span>
+			</label>
+		</div>
+		<div class="col-md-9">
+			{{ form_row(registrationForm.fraiActivationCart) }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3">
+			<label class="">Conditions générales de vente
+				<span class="text-danger">*</span>
+			</label>
+		</div>
+		<div class="col-md-9">
+			{{ form_row(registrationForm.agreeTerms, {label: "J'accepte les conditions générales du contrat. J'accepte que mes données personnelles (prénom, nom, mail, téléphone) soient utilisées pour me joindre en cas de besoin."}) }}
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-md-12">
+			<h4>Test d'éligibilité à la décennale photovoltaïque</h4>
+			{{ form_row(registrationForm.eligibilite) }}
+		</div>
+	</div>
+</fieldset>
+
+<div class="row mb-4">
+	<div class="col-md-8">
+		<fieldset class="rounded border p-3 h-100">
+			<legend>3 - Information comptoir</legend>
+			<div class="row">
+				<div class="col-md-2">
+					<label>
+						<strong>Conseiller<span class="text-danger">*</span>
+						</strong>
+					</label>
+				</div>
+				<div class="col-md-10">
+					{{ form_row(registrationForm.conseiller) }}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<label>
+						<strong>Comptoir<span class="text-danger">*</span>
+						</strong>
+					</label>
+				</div>
+				<div class="col-md-3">
+					{{ form_row(registrationForm.agency) }}
+				</div>
+				<div class="col-md-3 pr-0">
+					<label>
+						<strong>Choix de l'agence<span class="text-danger">*</span>
+						</strong>
+					</label>
+				</div>
+				<div class="col-md-4 pl-md-0">
+					{{ form_row(registrationForm.agenceadresse) }}
+				</div>
+			</div>
+		</fieldset>
+	</div>
+	<div class="col-md-4">
+		<fieldset class="border rounded p-3 h-100">
+			<legend>4 - Votre abonnement</legend>
+			<label for="conseiller" class="d-block font-weight-bold">
+				<strong>Nombre de salariés<span class="text-danger">*</span>
+				</strong>
+			</label>
+			{{ form_row(registrationForm.salaries) }}
+		</fieldset>
+	</div>
+</div>
+
+<fieldset class="border rounded p-3 mb-4">
+
+	<legend>5 – Création du compte Intellia</legend>
+
+	<div class="row">
+		<div class="col-md-6">
+			<label>
+				<i class="fa fa-user"></i>
+				<strong>Adresse e-mail<span class="text-danger">*</span>
+				</strong>
+			</label>
+			{{ form_row(registrationForm.email) }}
+
+			<label>
+				<i class="fa fa-key"></i>
+				<strong>Mot de passe<span class="text-danger">*</span>
+				</strong>
+			</label>
+
+			{{ form_row(registrationForm.plainPassword) }}
+		</div>
+
+		<div class="col-md-5 ml-auto">
+			<label>Pour des raisons de contrôle, la carte CLUB Intellia n'est cessible qu'à 3 personnes pouvant la détenir. Il vous suffit pour ça de les renseigner ci-après.</label>
+
+			{{ form_row(registrationForm.authpersonne_1) }}
+			{{ form_row(registrationForm.authpersonne_2) }}
+			{{ form_row(registrationForm.authpersonne_3) }}
+		</div>
+	</div>
+
+</fieldset>
+
+<div class="row">
+	<div class="col-md-6">
+		<fieldset class="border p-3 rounded h-100">
+			<legend>6 - Informations complémentaires</legend>
+			<label>
+				<strong>RIB</strong>
+				<span class="text-danger">*</span>
+			</label>
+			{{ form_row(registrationForm.ribFile) }}
+
+			<label>
+				<strong>Carte d'identité</strong>
+			</label>
+			{{ form_row(registrationForm.cniFile) }}
+		</fieldset>
+	</div>
+	<div class="col-md-6">
+		<fieldset class="border rounded p-3 h-100">
+			<legend>Signature
+				<strong>adhérent</strong>
+			</legend>
+			{{ form_row(registrationForm.signature) }}
+
+			{{ form_errors(registrationForm) }}
+
+			<div id="sig" class="border rounded">
+				<canvas></canvas>
+			</div>
+			<button type="button" id="clear" class="btn btn-light border btn-sm">Effacer la signature</button>
+		</fieldset>
+	</div>
+</div>
+
+<div class="form-group pt-4 pb-4">
+	<button class="btn {{ app.request.attributes.get('_route') == 'app_register' ? 'primary-btn-outline' : 'btn-danger text-light' }} mb-3 rounded-0" type="reset">Effacer</button>
+	<button class="btn {{ app.request.attributes.get('_route') == 'app_register' ? 'primary-btn ' : 'btn-primary' }} rounded-0 mb-3" type="submit">Souscrire l'abonnement</button>
+</div>
+{{ form_end(registrationForm) }}
+
+{% block javascripts %}
+	<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+	<script type="text/javascript">
+
+		const canvas = document.querySelector("canvas");
+
+const signaturePad = new SignaturePad(canvas);
+
+$('#clear').click(function (e) {
+e.preventDefault();
+signaturePad.clear();
+})
+
+var form = document.getElementById('registration_form');
+
+// Submit form
+form.addEventListener('submit', function (event) {
+
+event.preventDefault();
+
+var image_url = signaturePad.toDataURL();
+
+$('#registration_form_signature').val(image_url);
+
+form.submit();
+});
+	</script>
+{% endblock %}

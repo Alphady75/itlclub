@@ -1,0 +1,27 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Contract{% endblock %}
+
+{% block body %}
+
+<div class="card shadow-sm">
+    <div class="card-header py-3"><h6 class="mb-0 fw-bold">Contrat de {{ company.name }}</h6></div>
+
+    <div class="card-body">
+
+        {{ include('admin/admin_contract/_bloc_single.html.twig') }}
+
+        <div class="pt-4 pb-4">
+            {{ include('admin/admin_contract/_download_form.html.twig') }}
+
+            <a href="{{ path('admin_contract_index') }}" class="btn btn-dark" class="btn btn-light border"><i class="fa fa-file"></i> Voir tout les contrats</a>
+
+            <a href="{{ path('admin_contract_edit', {'id': contract.id}) }}" class="btn btn-secondary"><i class="fa fa-edit"></i>Modifier</a>
+
+            {{ include('admin/admin_contract/_delete_form.html.twig') }}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

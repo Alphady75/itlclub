@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="col-md-8 mx-auto">
+		{{ form_start(offresForm, {'attr': {'class': 'input-group rounded'}}) }}
+		<div class="input-group-prepend border-0 bg-white rounded">
+			<div class="input-group-text bg-white  border-0">
+				<i class="fa fa-search"></i>
+			</div>
+		</div>
+		{{ form_widget(offresForm.q, {'attr': {'class': 'form-control'}}) }}
+		<div class="input-group-append">
+			<button class="btn primary-btn">{{ button_label|default('Chercher') }}</button>
+		</div>
+		{{ form_end(offresForm) }}
+	</div>
+</div>

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ComplementaireInfos index{% endblock %}
+
+{% block body %}
+    <h1>ComplementaireInfos index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rib</th>
+                <th>Cni</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for complementaire_info in complementaire_infos %}
+            <tr>
+                <td>{{ complementaire_info.id }}</td>
+                <td>{{ complementaire_info.rib }}</td>
+                <td>{{ complementaire_info.cni }}</td>
+                <td>{{ complementaire_info.created ? complementaire_info.created|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ complementaire_info.updated ? complementaire_info.updated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_complementaire_infos_show', {'id': complementaire_info.id}) }}">show</a>
+                    <a href="{{ path('admin_complementaire_infos_edit', {'id': complementaire_info.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_complementaire_infos_new') }}">Create new</a>
+{% endblock %}

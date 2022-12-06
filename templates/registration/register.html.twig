@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}INTEGRER LE RESEAU - {{ appName }}{% endblock %}
+
+{% block body %}
+
+<!-- BANNER SECTION -->
+<section class="banner-section register-banner primary-bg costom-small-padding-top" style="background-image: url('{{ asset('themes/front/assets/img/core/WAVE_BACKGROUND3.png') }}');background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mx-auto">
+                <div class="caption">
+                    <span class="font-weight-bold">LE CLUB INTELLIA</span>
+                    <h1>INTÉGRER LE</h1>
+                    <div class="register-caption">
+                        <img src="{{ asset('themes/front/assets/img/core/CB_recto-1.png') }}" class="img-1">
+                        <img src="{{ asset('themes/front/assets/img/core/CB_verso-1.png') }}" class="img-2">
+                    </div>
+                    <h2>RÉSEAU</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- BANNER SECTION -->
+
+<!-- ACCOMPAGNEMENT SECTION -->
+<section class="accompagnement-section secondary-bg costom-padding text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="caption">
+                    <span>Intellia vous accompagne au plus près</span>
+                    <h2 class="text-light">Nous avons pensé un système très simple</h2>
+                    <p>Il vous suffit de suivre ces quelques étapes pour accéder au club Intellia
+                    et exploiter pleinement votre carte club. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ACCOMPAGNEMENT SECTION -->
+
+<!-- ABONNEMENT SECTION -->
+<section class="abonnement-section primary-bg costom-padding text-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="">
+                    <span>UNE OFFRE ADHÉRENT UNIQUE</span>
+                    <h2 class="text-light">UN ABONNEMENT<br/> SANS ENGAGEMENT<br/></h2>
+                    <p>La carte club Intellia est le meilleur moyen pour ne pas dire <br />
+                        le seul moyen de profiter des avantages, offres et service du réseau. <br />
+                        Valable ad vitam æternam* & sans engagement.<br />
+                        <br />
+                    *sous réserve d'être à jour de sa cotisation mensuelle</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div>
+                    <img src="{{ asset('themes/front/assets/img/core/59.png') }}" class="w-75">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ABONNEMENT SECTION -->
+
+<!-- REGISTER FORM SECTION -->
+<section class="register-section costom-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-section">
+                    {{ include('registration/_form_second_style.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- REGISTER FORM SECTION -->
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).on('change', '#registration_form_agency', function () {
+
+        let $field = $(this)
+        let $form = $field.closest('form')
+        let data = {}
+
+        data[$field.attr('name')] = $field.val()
+
+        $.post($form.attr('action'), data).then(function (data) {
+
+            console.log(data)
+
+            let $input = $(data).find('#registration_form_agenceadresse') 
+
+            $('#registration_form_agenceadresse').replaceWith($input)
+
+        }).catch(function(error){
+            console.log(error)
+        })
+    })
+</script>
+
+{{ parent() }}
+{% endblock %}

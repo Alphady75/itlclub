@@ -1,0 +1,61 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Partenaires ({{ users.getTotalItemCount }}){% endblock %}
+
+{% block body %}
+<div class="card shadow-sm">
+ <div class="card-header py-3">
+    <h6 class="mb-0 fw-bold ">Partenaires <span class="badge bg-primary">{{ users.getTotalItemCount }}</span></h6>
+</div>
+<div class="card-body">
+    <div class="table-opration mt-4 mb-4">
+        <div class="row">
+            <div class="col-md-6 text-right">
+                <a href="{{ path('admin_partenaires_new') }}" class="btn btn-dark">
+                    <i class="fa fa-user-plus me-2 fs-6"></i>Crée un partenaire
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+            <thead class="bg-dark text-light">
+                <tr>
+                    <th>#Id</th>
+                    <th>Nom prénom</th>
+                    <th>Téléphone</th>
+                    <th>Inscrit le</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>
+                        <strong><i class="fa fa-user"></i> {{ user.lastname }} {{ user.name }}</strong> <br>
+                        <a href="mailto:{{ user.email }}"><i class="fa fa-envelope"></i> {{ user.email }}</a>
+                    </td>
+                    <td>{{ user.telephone ? user.telephone : '<i class="fa fa-ellipsis-h"></i>' }}</td>
+                    <td>{{ user.subscriptionDate ? user.subscriptionDate|date('d/m/Y') : '' }}</td>
+                    <td>
+                        <a href="{{ path('admin_partenaires_show', {'id': user.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+                        <a href="{{ path('admin_partenaires_edit', {'id': user.id}) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="5">Aucun partenaire</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {{ knp_pagination_render(users) }}
+
+    </div>
+</div>
+</div>
+{% endblock %}

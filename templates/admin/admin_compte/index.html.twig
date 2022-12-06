@@ -1,0 +1,85 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Comptes utilisateurs{% endblock %}
+
+{% block body %}
+
+<div class="card shadow-sm">
+   <div class="card-header py-3">
+      <h6 class="mb-0 fw-bold">
+         Comptes utilisateurs
+         <span class="badge bg-primary">{{ users.getTotalItemCount }}</span>
+      </h6>
+   </div>
+   <div class="card-body">
+      <div class="table-opration">
+         <div class="btn-group me-sm-2 mb-2 zindex-popover">
+            <a href="{{ path('app_admin_compte_new') }}" class="btn btn-dark mb-4">
+               <i class="fa fa-user-circle"></i> &nbsp; Nouveau compte
+            </a>
+         </div>
+         <div class="table-responsive">
+            <table class="table table-hover w-100">
+               <thead class="bg-dark text-light">
+                  <tr>
+                     <th>Id</th>
+                     <th>Nom</th>
+                     <th>Prénom</th>
+                     <th>Civilite</th>
+                     <th>Téléphone</th>
+                     <th>Fonction</th>
+                     <th>Roles</th>
+                     <th>SubscriptionDate</th>
+                     <th>actions</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  {% for user in users %}
+
+                  {% if app.user == user %}
+
+                  {% else %}
+
+                  <tr>
+                     <td>{{ user.id }}</td>
+                     <td>{{ user.name }}</td>
+                     <td>{{ user.lastname }}</td>
+                     <td>{{ user.civilite }}</td>
+                     <td>{{ user.telephone }}</td>
+                     <td>{{ user.job }}</td>
+                     <td>
+                        {% for role in user.roles %} {% if role == 'ROEL_ADMIN' %}
+                        <span class="badge bg-primary">Administrateur</span>
+                        {% elseif role == 'ROLE_COMMERCIAL' %}
+                        <span class="badge bg-secondary">Commercial</span>
+                        {% elseif role == 'ROLE_ADHERANT' %}
+                        <span class="badge bg-secondary">Adhérent</span>
+                        {% endif %} {% endfor %}
+                     </td>
+                     <td>
+                        {{ user.subscriptionDate ? user.subscriptionDate|date('Y-m-d H:i:s') : '' }}
+                     </td>
+                     <td>
+                        <a href="{{ path('app_admin_compte_show', {'id': user.id}) }}" class="btn btn-primary btn-sm"><i
+                              class="fa fa-eye"></i></a>
+                        <a href="{{ path('app_admin_compte_edit', {'id': user.id}) }}" class="btn btn-primary btn-sm"><i
+                              class="fa fa-edit"></i></a>
+                     </td>
+                  </tr>
+
+                  {% endif %}
+                  {% else %}
+                  <tr>
+                     <td colspan="9">Aucun compte utilisateur</td>
+                  </tr>
+                  {% endfor %}
+               </tbody>
+            </table>
+
+            {{ knp_pagination_render(users) }}
+         </div>
+      </div>
+   </div>
+</div>
+
+{% endblock %}

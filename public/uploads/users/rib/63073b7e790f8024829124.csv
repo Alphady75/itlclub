@@ -1,0 +1,5 @@
+"PGM"
+" T1:         DCL        VAR(&T1) TYPE(*CHAR) LEN(6)"
+"             RTVSYSVAL  SYSVAL(QTIME) RTNVAR(&T1)"
+" TEMPS:      SNDMSG     MSG(&T1) TOUSR(WST008)"
+" ENDPGM"

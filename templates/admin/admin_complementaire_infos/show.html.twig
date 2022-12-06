@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ComplementaireInfos{% endblock %}
+
+{% block body %}
+    <h1>ComplementaireInfos</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ complementaire_info.id }}</td>
+            </tr>
+            <tr>
+                <th>Rib</th>
+                <td>{{ complementaire_info.rib }}</td>
+            </tr>
+            <tr>
+                <th>Cni</th>
+                <td>{{ complementaire_info.cni }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ complementaire_info.created ? complementaire_info.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ complementaire_info.updated ? complementaire_info.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_complementaire_infos_index') }}">back to list</a>
+
+    <a href="{{ path('admin_complementaire_infos_edit', {'id': complementaire_info.id}) }}">edit</a>
+
+    {{ include('admin_complementaire_infos/_delete_form.html.twig') }}
+{% endblock %}

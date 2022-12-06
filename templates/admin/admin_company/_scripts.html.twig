@@ -1,0 +1,22 @@
+<script>
+    $(document).on('change', '#company_agency', function () {
+
+        let $field = $(this)
+        let $form = $field.closest('form')
+        let data = {}
+
+        data[$field.attr('name')] = $field.val()
+
+        $.post($form.attr('action'), data).then(function (data) {
+
+            console.log(data)
+
+            let $input = $(data).find('#company_agenceadresse') 
+
+            $('#company_agenceadresse').replaceWith($input)
+
+        }).catch(function(error){
+            console.log(error)
+        })
+    })
+</script>

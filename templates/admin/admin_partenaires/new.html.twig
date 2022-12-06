@@ -1,0 +1,45 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Créer un partenaire{% endblock %}
+
+{% block body %}
+
+<div class="card shadow-sm">
+    <div class="card-header py-3"><h6 class="mb-0 fw-bold h5">Créer un partenaire</h6></div>
+
+    <div class="card-body">
+
+        {{ include('admin/admin_partenaires/_form.html.twig') }}
+
+    </div>
+</div>
+{% endblock %}
+
+{% block stylesheets %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" integrity="sha512-oL84kLQMEPIS350nZEpvFH1whU0HHGNUDq/X3WBdDAvKP7jn06gHTsCsymsoPYKF/duN8ZxzzvQgOaaZSgcYtQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).on('change', '#partenaire_agency', function () {
+
+        let $field = $(this)
+        let $form = $field.closest('form')
+        let data = {}
+
+        data[$field.attr('name')] = $field.val()
+
+        $.post($form.attr('action'), data).then(function (data) {
+
+            console.log(data)
+
+            let $input = $(data).find('#partenaire_agenceadresse') 
+
+            $('#partenaire_agenceadresse').replaceWith($input)
+
+        }).catch(function(error){
+            console.log(error)
+        })
+    })
+</script>
+{% endblock %}

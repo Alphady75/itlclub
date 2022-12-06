@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+<div class="row">
+    <div class="col-md-8">
+
+        {{ form_widget(form) }}
+    
+        <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+
+        <a href="{{ path('admin_documents_index') }}" class="btn btn-danger text-light">Annuler</a>
+
+    </div>
+</div>
+{{ form_end(form) }}
