@@ -26,10 +26,17 @@ class Agency
     #[ORM\OneToMany(mappedBy: 'agence', targetEntity: AgenceAdress::class)]
     private $agenceAdresses;
 
+    #[ORM\OneToMany(mappedBy: 'agency', targetEntity: Solipac::class, orphanRemoval: true)]
+    private Collection $solipacs;
+
+    #[ORM\ManyToOne(inversedBy: 'agencies')]
+    private ?User $commercial = null;
+
     public function __construct()
     {
         $this->adress = new ArrayCollection();
         $this->agenceAdresses = new ArrayCollection();
+        $this->solipacs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,6 +87,48 @@ class Agency
                 $agenceAdress->setAgence(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Solipac>
+     */
+    public function getSolipacs(): Collection
+    {
+        return $this->solipacs;
+    }
+
+    public function addSolipac(Solipac $solipac): self
+    {
+        if (!$this->solipacs->contains($solipac)) {
+            $this->solipacs->add($solipac);
+            $solipac->setAgency($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSolipac(Solipac $solipac): self
+    {
+        if ($this->solipacs->removeElement($solipac)) {
+            // set the owning side to null (unless already changed)
+            if ($solipac->getAgency() === $this) {
+                $solipac->setAgency(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCommercial(): ?User
+    {
+        return $this->commercial;
+    }
+
+    public function setCommercial(?User $commercial): self
+    {
+        $this->commercial = $commercial;
 
         return $this;
     }

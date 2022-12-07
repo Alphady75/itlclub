@@ -22,6 +22,8 @@
 
             <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_demande_index' ? 'active' : '' }}" href="{{ path('admin_demande_index') }}"><i class="icofont-folder-open"></i> <span>Demandes</span></a></li>
 
+            <li><a class="m-link {{ app.request.attributes.get('_route') == 'app_admin_solipac_index' ? 'active' : '' }}" href="{{ path('app_admin_solipac_index') }}"><i class="fa fa-file"></i> <span>Solipac</span></a></li>
+
             <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_company_index' ? 'active' : '' }}" href="{{ path('admin_company_index') }}"><i class="fa fa-store-alt"></i> <span>Sociétés</span></a></li>
 
             <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_offres_index' ? 'active' : '' }}" href="{{ path('admin_offres_index') }}"><i class="icofont-money"></i> <span>Offres</span></a></li>

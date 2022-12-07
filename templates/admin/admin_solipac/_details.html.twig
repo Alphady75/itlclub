@@ -1,0 +1,320 @@
+<h3 style="padding: 20px 0;font-weight: bold;color: orange;text-align: center;font-size: 2rem;">FORMULAIRE SOLIPAC</h3>
+
+<h3 style="padding: 20px 0;font-weight: bold;color: orange;">1 – INFORMATIONS COMPTOIR</h3>
+
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 49%">
+		<strong>Choix de l’agence:</strong>
+		{{ solipac.agency }}
+	</div>
+	<div style="display: inline-block;width: 49%">
+		<strong>Conseiller:</strong>
+		{{ solipac.conseiller }}
+	</div>
+</div>
+
+<h3 style="padding: 20px 0;font-weight: bold;color: orange;">2 – INFORMATIONS GÉNÉRALES
+</h3>
+
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 49%">
+		<strong>NOM DE LA SOCIÉTÉ:</strong>
+		{{ solipac.societe }}
+		<br>
+
+		<strong>Téléphone:</strong>
+		{{ solipac.societeTel }}
+		<br>
+
+		<strong>Mail:</strong>
+		{{ solipac.societeEmail }}
+		<br>
+
+		<strong>Adresse:</strong>
+		{{ solipac.societeAdresse }}
+		<br>
+
+		<strong>SIRET:</strong>
+		{{ solipac.societeSiret }}
+		<br>
+
+		<strong>Date de création société:</strong>
+		{{ solipac.societeDateCreation|date('d/m/Y') }}
+		<br>
+
+		<strong>Effectif:</strong>
+		{{ solipac.societeEffectif }}
+	</div>
+	<div style="display: inline-block;width: 49%">
+		<strong>NOM DU GÉRANT:</strong>
+		{{ solipac.gerant }}
+		<br>
+
+		<strong>Téléphone:</strong>
+		{{ solipac.gerantTel }}
+		<br>
+
+		<strong>Mail:</strong>
+		{{ solipac.gerantMail }}
+		<br>
+
+		<strong>APE:</strong>
+		{{ solipac.ape }}
+		<br>
+
+		<strong>CA 2021:</strong>
+		{{ solipac.ca2021 }}
+		<br>
+
+		<strong>Composition:</strong>
+		{{ solipac.composition }}
+	</div>
+</div>
+
+<strong>Qualifications:</strong>
+{% for qualification in solipac.societeQualification %}
+	<span>{{ qualification }}</span>
+{% endfor %}
+<br>
+
+<strong>Zone géographique d’intervention:</strong>
+{{ solipac.zoneGeoInter }}
+
+<h3 style="padding: 20px 0;font-weight: bold;color: orange;">3 – ACTIVITÉS PRINCIPALES</h3>
+
+{% if solipac.pacAirEau %}
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 32%">
+		<div>PAC Air/Eau</div>
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Marque:</strong>
+		{{ solipac.pacAirEauMarque }}
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Volume:</strong>
+		{{ solipac.pacAirEauVolume }}
+	</div>
+</div>
+{% endif %}
+
+{% if solipac.pacAirAir %}
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 32%">
+		<div>PAC Air/Air</div>
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Marque:</strong>
+		{{ solipac.pacAirAirMarque }}
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Volume:</strong>
+		{{ solipac.pacAirAirVolume }}
+	</div>
+</div>
+{% endif %}
+
+{% if solipac.ballonThermo %}
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 32%">
+		<div>Ballon Thermo</div>
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Marque</strong>
+		{{ solipac.ballonThermoMarque }}
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Volume</strong>
+		{{ solipac.ballonThermoVolume }}
+	</div>
+</div>
+{% endif %}
+
+{% if solipac.biomasse %}
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 32%">
+		<div>Biomasse</div>
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Marque</strong>
+		{{ solipac.biomasseMarque }}
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Volume</strong>
+		{{ solipac.biomasseVolume }}
+	</div>
+</div>
+{% endif %}
+
+{% if solipac.planChauffant %}
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 32%">
+		<div>Plancher chauffant</div>
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Marque</strong>
+		{{ solipac.planChauffantMarque }}
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Volume</strong>
+		{{ solipac.planChauffantVolume }}
+	</div>
+</div>
+{% endif %}
+
+{% if solipac.adoucisseur %}
+<div style="padding: 5px 0;">		
+	<div style="display: inline-block;width: 32%">
+		<div>Adoucisseur</div>
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Marque</strong>
+		{{ solipac.adoucisseurMarque }}
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Volume</strong>
+		{{ solipac.adoucisseurVolume }}
+	</div>
+</div>
+{% endif %}
+
+{% if solipac.ventilation %}
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 32%">
+		<div>Ventilation</div>
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Marque</strong>
+		{{ solipac.ventilationMarque }}
+	</div>
+	<div style="display: inline-block;width: 32%">
+		<strong>Volume</strong>
+		{{ solipac.ventilationVolume }}
+	</div>
+</div>
+{% endif %}
+
+<div style="padding: 5px 0;">
+	{% if solipac.renovation %}
+	<div style="display: inline-block;width: 49%">
+		<strong>Renovation</strong>
+		
+		{{ solipac.renovPourcentage }}<span>%</span>
+	</div>
+	{% endif %}
+
+	{% if solipac.neuf %}
+	<div style="display: inline-block;width: 49%">
+		<strong class="py-4 text-sm-right">Neuf</strong>
+		{{ solipac.neufPourcentage }}<span>%</span>
+	</div>
+	{% endif %}
+
+</div>
+
+<h3 style="padding: 20px 0;font-weight: bold;color: orange;">
+	4 – CONDITIONS DE REGLEMENT ET CALCUL D’ENCOURS
+</h3>
+<div style="padding: 5px 0;">
+	<div class="col-sm-10">
+		<strong>Volumes achats (€ TTC/MOIS):</strong>
+		{{ solipac.volumeAchat }}
+
+		<span class="indice">A</span>
+	</div>
+</div>
+<div style="padding: 5px 0;">
+	<div class="col-sm-10">
+		<strong>Intervale de temps:</strong>
+		{% for nbjour in solipac.nbJours %}
+			<span>{{ nbjour }}</span>
+		{% endfor %}
+
+		<span class="indice">B</span>
+	</div>
+</div>
+<div style="padding: 5px 0;">
+	<div class="col-sm-10">
+		<strong>Encours demande (AxB)</strong>
+		{{ solipac.encoursDemande }}
+	</div>
+	<div class="col-sm-10">
+		<strong>Méthode de reglement:</strong>
+		{% for demandemethode in solipac.demandeMethode %}
+			<span>{{ demandemethode }}</span>
+		{% endfor %}
+	</div>
+</div>
+
+<h3 style="padding: 20px 0;font-weight: bold;color: orange;margin-bottom: 30px;">5 – BESOINS CLIENT</h3>
+<div style="padding: 5px 0;">
+	<div style="display: inline-block;width: 49%">
+		<h6 style="color: orange;font-weight: 600;padding: 5px 0;">FORMATIONS COMMERCIALES</h6>
+		{% for formationcom in solipac.formationCom %}
+			<span>{{ formationcom }}</span>
+			<br>
+		{% endfor %}
+
+		<h6 style="color: orange;font-weight: 600;padding: 5px 0;">ACCOMPAGNEMENT TECHNIQUE</h6>
+		{% for accompTech in solipac.accompTech %}
+			<span>{{ accompTech }}</span>
+			<br>
+		{% endfor %}
+
+		<h6 style="color: orange;font-weight: 600;padding: 5px 0;">ACCOMPAGNEMENT ASSURANCE</h6>
+		{% for accompAssurance in solipac.accompAssurance %}
+			<span>{{ accompAssurance }}</span>
+			<br>
+		{% endfor %}
+		<h6 style="color: orange;font-weight: 600;padding: 5px 0;">OBJECTIF AVEC LE CLIENT :</h6>
+		{% for objClient in solipac.objClient %}
+			<p>{{ objClient }}</h6>
+		{% endfor %}
+	</div>
+	<div style="display: inline-block;width: 49%">
+
+		<h6 style="color: orange;font-weight: 600;padding: 5px 0;">FORMATIONS QUALIFIANTES</h6>
+		{% for formationQua in solipac.formationQua %}
+			<span>{{ formationQua }}</span>
+			<br>
+		{% endfor %}
+
+		<h6 style="color: orange;font-weight: 600;padding: 5px 0;">ACCOMPAGNEMENT ADMINISTRATIF</h6>
+		{% for accompAdmin in solipac.accompAdmin %}
+			<span>{{ accompAdmin }}</span>
+			<br>
+		{% endfor %}
+
+		<h6 style="color: orange;font-weight: 600;padding: 5px 0;">BESOIN D’UN APPRENTI</h6>
+		{% for besoinApprenti in solipac.besoinApprenti %}
+			<span>{{ besoinApprenti }}</span>
+			<br>
+		{% endfor %}
+
+		<h6 style="color: orange;font-weight: 600;padding: 5px 0;">APPRÉCIATION GÉNÉRALE</h6>
+		{% for appreciationGen in solipac.appreciationGen %}
+			<span>{{ appreciationGen }}</span>
+			<br>
+		{% endfor %}
+	</div>
+	<div class="col-sm-12">
+		<strong style="color: orange;">DATE DU 1ER RDV:</strong>
+		{{ solipac.dateRdv1|date('d/m/Y') }}
+	</div>
+	<div class="col-sm-12">
+		<strong style="color: orange;">DATE DU R2:</strong>
+		{{ solipac.dateRdv2|date('d/m/Y') }}
+	</div>
+	<div class="col-sm-12">
+		<strong style="color: orange;">ORIGINE DU CONTACT:</strong>
+		{% for origineContact in solipac.origineContact %}
+			<span>{{ origineContact }}</span>
+		{% endfor %}
+	</div>
+	<div class="col-sm-12">
+		<strong style="color: orange;">Autre commentaire:</strong>
+		<div>
+			{{ solipac.autreCommentatire }}
+		</div>
+	</div>
+</div>

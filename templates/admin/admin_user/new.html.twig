@@ -9,7 +9,7 @@
 
     <div class="card-body">
 
-        {{ include('registration/_form_second_style.html.twig') }}
+        {{ include('admin/admin_user/_adherent_form.html.twig') }}
 
     </div>
 </div>
@@ -21,7 +21,7 @@
 
 {% block javascripts %}
 <script>
-    $(document).on('change', '#registration_form_agency', function () {
+    $(document).on('change', '#adherent_agency', function () {
 
         let $field = $(this)
         let $form = $field.closest('form')
@@ -33,9 +33,9 @@
 
             console.log(data)
 
-            let $input = $(data).find('#registration_form_agenceadresse') 
+            let $input = $(data).find('#adherent_agenceadresse') 
 
-            $('#registration_form_agenceadresse').replaceWith($input)
+            $('#adherent_agenceadresse').replaceWith($input)
 
         }).catch(function(error){
             console.log(error)

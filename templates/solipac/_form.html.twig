@@ -1,0 +1,192 @@
+{{ form_start(form, {attr: {class: 'row'}}) }}
+<div class="col-sm-9 mx-auto">
+    <legend class="font-weight-bold py-4" style="color: orange;">FORMULAIRE SOLIPAC</legend>
+
+    <legend class="font-weight-bold py-4" style="color: orange;">1 – INFORMATIONS COMPTOIR</legend>
+
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form_row(form.agency) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.conseiller) }}
+        </div>
+    </div>
+
+    <legend class="font-weight-bold py-4" style="color: orange;">2 – INFORMATIONS GÉNÉRALES </legend>
+
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form_row(form.societe) }}
+            {{ form_row(form.societeTel) }}
+            {{ form_row(form.societeEmail) }}
+            {{ form_row(form.societeAdresse) }}
+            {{ form_row(form.societeSiret) }}
+            {{ form_row(form.societeDateCreation) }}
+            {{ form_row(form.societeEffectif) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.gerant) }}
+            {{ form_row(form.gerantTel) }}
+            {{ form_row(form.gerantMail) }}
+            {{ form_row(form.ape) }}
+            {{ form_row(form.ca2021) }}
+            {{ form_row(form.composition) }}
+        </div>
+    </div>
+
+    {{ form_row(form.societeQualification) }}
+
+    {{ form_row(form.zoneGeoInter) }}
+
+    <legend class="font-weight-bold py-4" style="color: orange;">3 – ACTIVITÉS PRINCIPALES</legend>
+    <div class="row pt-2">
+        <div class="col-sm-4">
+            <div class="py-4">{{ form_row(form.pacAirEau) }}</div>
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.pacAirEauMarque) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.pacAirEauVolume) }}
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-sm-4">
+            <div class="py-4">{{ form_row(form.pacAirAir) }}</div>
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.pacAirAirMarque) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.pacAirAirVolume) }}
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-sm-4">
+            <div class="py-4">{{ form_row(form.ballonThermo) }}</div>
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.ballonThermoMarque) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.ballonThermoVolume) }}
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-sm-4">
+            <div class="py-4">{{ form_row(form.biomasse) }}</div>
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.biomasseMarque) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.biomasseVolume) }}
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-sm-4">
+            <div class="py-4">{{ form_row(form.planChauffant) }}</div>
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.planChauffantMarque) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.planChauffantVolume) }}
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-sm-4">
+            <div class="py-4">{{ form_row(form.adoucisseur) }}</div>
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.adoucisseurMarque) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.adoucisseurVolume) }}
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-sm-4">
+            <div class="py-4">{{ form_row(form.ventilation) }}</div>
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.ventilationMarque) }}
+        </div>
+        <div class="col-sm-4">
+            {{ form_row(form.ventilationVolume) }}
+        </div>
+    </div>
+    <div class="row pt-2">
+        <div class="col-sm-4">
+            <div class="py-4">{{ form_row(form.renovation) }}</div>
+        </div>
+        <div class="col-sm-2">
+            {{ form_row(form.renovPourcentage) }}
+        </div>
+        <div class="col-sm-4">
+            <div class="py-4 text-sm-right">{{ form_row(form.neuf) }}</div>
+        </div>
+        <div class="col-sm-2">
+            {{ form_row(form.neufPourcentage) }}
+        </div>
+    </div>
+
+    <legend class="font-weight-bold py-4" style="color: orange;">4 – CONDITIONS DE REGLEMENT ET CALCUL D’ENCOURS</legend>
+    <div class="row">
+        <div class="col-sm-10">
+            {{ form_row(form.volumeAchat) }}
+        </div>
+        <div class="col-sm-2">
+            <span class="indice">A</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10">
+            {{ form_row(form.nbJours) }}
+        </div>
+        <div class="col-sm-2">
+            <span class="indice">B</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10">
+            {{ form_row(form.encoursDemande) }}
+        </div>
+        <div class="col-sm-10">
+            {{ form_row(form.demandeMethode) }}
+        </div>
+    </div>
+
+    <legend class="font-weight-bold py-4" style="color: orange;">5 – BESOINS CLIENT</legend>
+    <div class="row">
+        <div class="col-sm-6">
+            {{ form_row(form.formationCom) }}
+            {{ form_row(form.accompTech) }}
+            {{ form_row(form.accompAssurance) }}
+            {{ form_row(form.objClient) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.formationQua) }}
+            {{ form_row(form.accompAdmin) }}
+            {{ form_row(form.besoinApprenti) }}
+            {{ form_row(form.appreciationGen) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_row(form.dateRdv1) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_row(form.dateRdv2) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_row(form.origineContact) }}
+        </div>
+        <div class="col-sm-12">
+            {{ form_row(form.autreCommentatire) }}
+        </div>
+    </div>
+
+    {{ form_rest(form) }}
+    <button class="btn btn-dark" formnovalidate>{{ button_label|default('Soumettre') }}</button>
+</div>
+{{ form_end(form) }}

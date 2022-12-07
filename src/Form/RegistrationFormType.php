@@ -148,13 +148,6 @@ class RegistrationFormType extends AbstractType
                 ]),
             ],
         ])
-        ->add('commercial', EntityType::class, [
-            'label' =>  false,
-            'class' => User::class,
-            'required' => false,
-            'placeholder' => 'Selectionnez un commercial',
-            'choices' => $this->userRepository->findByRoles('ROLE_COMMERCIAL'),
-        ])
         ->add('telephone', TextType::class, [
             'label' => false,
             'attr' => ['placeholder' => ' '],

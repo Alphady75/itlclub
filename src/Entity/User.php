@@ -125,11 +125,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\OneToMany(mappedBy: 'commercial', targetEntity: self::class)]
     private Collection $users;
 
+    #[ORM\OneToMany(mappedBy: 'commercial', targetEntity: Agency::class)]
+    private Collection $agencies;
+
     public function __construct()
     {
         $this->offres = new ArrayCollection();
         $this->demandes = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->agencies = new ArrayCollection();
     }
 
     public function setRibFile(?File $rib = null)
@@ -593,6 +597,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
             // set the owning side to null (unless already changed)
             if ($user->getCommercial() === $this) {
                 $user->setCommercial(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Agency>
+     */
+    public function getAgencies(): Collection
+    {
+        return $this->agencies;
+    }
+
+    public function addAgency(Agency $agency): self
+    {
+        if (!$this->agencies->contains($agency)) {
+            $this->agencies->add($agency);
+            $agency->setCommercial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAgency(Agency $agency): self
+    {
+        if ($this->agencies->removeElement($agency)) {
+            // set the owning side to null (unless already changed)
+            if ($agency->getCommercial() === $this) {
+                $agency->setCommercial(null);
             }
         }
 

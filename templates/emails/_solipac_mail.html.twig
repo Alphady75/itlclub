@@ -1,0 +1,11 @@
+<div style="">
+    <h1>Nouveau Message</h1>
+    
+    <p>Destinataire: {{ solipac.societe }}</p>
+    <a href="mailto: {{ societemail }}">{{ societemail }}</a>
+    
+    {{ include('admin/admin_solipac/_details.html.twig') }}
+
+    {{ include('admin/admin_solipac/_download.html.twig') }}
+
+</div>

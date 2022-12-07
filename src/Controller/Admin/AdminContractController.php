@@ -65,7 +65,7 @@ class AdminContractController extends AbstractController
 
         $complement = $compleInfoRepo->findOneBy(['company' => $company]);
 
-        $adress = $adressRepository->findOneBy(['company' => $company]);
+        $adress = $companyRepository->findOneBy(['agenceadresse' => $company]);
 
         $user = $userRepository->findOneBy(['id' => $company->getUser()]);
 
@@ -124,7 +124,7 @@ class AdminContractController extends AbstractController
 
         $complement = $compleInfoRepo->findOneBy(['company' => $company]);
 
-        $adress = $adressRepository->findOneBy(['company' => $company]);
+        $adress = $companyRepository->findOneBy(['agenceadresse' => $company]);
 
         $user = $userRepository->findOneBy(['id' => $company->getUser()]);
 

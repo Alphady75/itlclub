@@ -13,7 +13,7 @@ use App\Repository\CompanyRepository;
 use App\Repository\AgencyRepository;
 use App\Repository\AdressRepository;
 use App\Repository\ContractRepository;
-use App\Form\RegistrationFormType;
+use App\Form\AdherentType;
 use App\Form\UserType;
 use App\Form\CreateUserFormType;
 use App\Form\EditUserFormType;
@@ -155,7 +155,7 @@ class AdminUserController extends AbstractController
         ContractRepository $contractRepository): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(AdherentType::class, $user);
         //$form = $this->createForm(IntegrationFormType::class);
         $form->handleRequest($request);
 

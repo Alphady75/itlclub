@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire solipac{% endblock %}
+
+{% block body %}
+<!-- BANNER SECTION -->
+<section class="banner-section-medium-height cover-bg-no-repeat" style="background-image: url('{{ asset('themes/front/assets/img/core/concept.png') }}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mx-auto">
+                <div class="caption faq">
+                    <h1>Formulaire solipac</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- BANNER SECTION -->
+
+<!-- REGISTER FORM SECTION -->
+<section class="costom-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="border pt-5 pb-5 rounded solipac-form">
+                    {{ include('solipac/_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- REGISTER FORM SECTION -->
+{% endblock %}

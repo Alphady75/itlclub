@@ -1,0 +1,59 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Formulaires solipac
+{% endblock %}
+
+{% block body %}
+	<div class="card shadow-sm">
+		<div class="card-header py-3">
+			<h6 class="mb-0 fw-bold ">Formulaires solipac
+				<span class="badge bg-primary">{{ solipacs.getTotalItemCount }}</span>
+			</h6>
+		</div>
+		<div class="card-body">
+			<div class="table-opration">
+				<div class="btn-group me-sm-2 mb-2 zindex-popover">
+					<a href="{{ path('app_admin_solipac_new') }}" class="btn btn-dark float-right">
+						<i class="icofont-ui-add me-2 fs-6"></i>Ajouter
+					</a>
+				</div>
+				<div class="table-responsive">
+
+					<table class="table table-hover">
+						<thead class="bg-dark text-light">
+							<tr>
+								<th>Id</th>
+								<th>Conseiller</th>
+								<th>Societe</th>
+								<th>Date de création</th>
+								<th>actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for solipac in solipacs %}
+								<tr>
+									<td>{{ solipac.id }}</td>
+									<td>{{ solipac.conseiller }}</td>
+									<td>{{ solipac.societe }}</td>
+									<td>{{ solipac.created ? solipac.created|date('d/m/Y') : '' }}</td>
+									<td>
+										<a href="{{ path('app_admin_solipac_show', {'id': solipac.id}) }}" class="btn btn-primary">Détails</a>
+										<a href="{{ path('app_admin_solipac_edit', {'id': solipac.id}) }}" class="btn btn-primary">Modiffier</a>
+										{{ include('admin/admin_solipac/_download.html.twig') }}
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="5">Aucun formulaire</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
+
+					{{ knp_pagination_render(solipacs) }}
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}

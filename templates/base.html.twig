@@ -48,6 +48,38 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" integrity="sha512-oL84kLQMEPIS350nZEpvFH1whU0HHGNUDq/X3WBdDAvKP7jn06gHTsCsymsoPYKF/duN8ZxzzvQgOaaZSgcYtQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         {% endblock %}
 
+        <style>
+            .solipac-form input[type=text],
+            .solipac-form input[type=date],
+            .solipac-form input[type=email],
+            .solipac-form input[type=number],
+            .solipac-form select,
+            .solipac-form textarea{
+                border: 1px dashed gray;
+                border-radius: 10px;
+                margin-top: -12px;
+            }
+            .solipac-form input[type=text],
+            .solipac-form input[type=date],
+            .solipac-form input[type=email],
+            .solipac-form input[type=number],
+            .solipac-form select{
+                padding: 0 13px!important;
+                height: 35px;
+                line-height: 35px;
+            }
+            .indice{
+                background-color: orange;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                display: inline-block;
+                margin-top: 20px;
+                text-align: center;
+                border-radius: 50%;
+            }
+        </style>
+
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
