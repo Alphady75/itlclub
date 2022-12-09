@@ -11,9 +11,10 @@ use App\Repository\AgencyRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/admin')]
 class AdminDashboardController extends AbstractController
 {
-    #[Route('/admin/dashboard', name: 'admin_dashboard')]
+    #[Route('/dashboard', name: 'admin_dashboard')]
     public function index(UserRepository $userRepository, CompanyRepository $companyRepository, OffresRepository $offresRepository, AgencyRepository $agencyRepository, DemandeRepository $demandeRepository): Response
     {
         return $this->render('admin/admin_dashboard/index.html.twig', [

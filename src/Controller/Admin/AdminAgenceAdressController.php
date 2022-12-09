@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/commercial/agence/adress')]
+#[Route('/admin/agence/adress')]
 class AdminAgenceAdressController extends AbstractController
 {
     #[Route('/', name: 'admin_agence_adress_index', methods: ['GET'])]

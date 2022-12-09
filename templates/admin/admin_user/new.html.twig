@@ -5,7 +5,10 @@
 {% block body %}
 
 <div class="card shadow-sm">
-    <div class="card-header py-3"><h6 class="mb-0 fw-bold">Créer un nouvel adhérent</h6></div>
+
+    <div class="card-header py-3">
+        <h6 class="mb-0 fw-bold">Créer un nouvel adhérent</h6>
+    </div>
 
     <div class="card-body">
 
@@ -13,6 +16,7 @@
 
     </div>
 </div>
+
 {% endblock %}
 
 {% block stylesheets %}
@@ -20,7 +24,11 @@
 {% endblock %}
 
 {% block javascripts %}
+
+{{ parent() }}
+
 <script>
+
     $(document).on('change', '#adherent_agency', function () {
 
         let $field = $(this)
@@ -41,5 +49,36 @@
             console.log(error)
         })
     })
+
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+	<script type="text/javascript">
+
+		const canvas = document.querySelector("canvas");
+
+		const signaturePad = new SignaturePad(canvas);
+
+		$('#clear').click(function (e) {
+			e.preventDefault();
+			signaturePad.clear();
+			})
+
+			var form = document.getElementById('adherent_form');
+
+			// Submit form
+			form.addEventListener('submit', function (event) {
+
+			event.preventDefault();
+
+			var image_url = signaturePad.toDataURL();
+
+			$('#adherent_signature').val(image_url);
+
+			form.submit();
+		});
+
+	</script>
+    
 {% endblock %}

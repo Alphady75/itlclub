@@ -30,7 +30,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
-#[Route('/commercial/partenaires')]
+#[Route('/admin/partenaires')]
 class AdminPartenairesController extends AbstractController
 {
     #[Route('/', name: 'admin_partenaires_index', methods: ['GET'])]

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/commercial/adress')]
+#[Route('/admin/adress')]
 class AdminAdressController extends AbstractController
 {
     #[Route('/', name: 'admin_adress_index', methods: ['GET'])]

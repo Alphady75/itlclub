@@ -38,275 +38,266 @@ class UserType extends AbstractType
     {
         $this->userRepository = $userRepository;
     }
-    
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('conseiller', TextType::class, [
-            'label' => false,
-            'mapped' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('agency', EntityType::class, [
-            'mapped' => false,
-            'label' =>  false,
-            'class' => Agency::class,
-            'placeholder' => 'Selectionnez',
+            ->add('commercial', EntityType::class, [
+                'label' =>  false,
+                'class' => User::class,
+                'required' => false,
+                'placeholder' => 'Selectionnez un commercial',
+                'choices' => $this->userRepository->findByRoles('ROLE_COMMERCIAL'),
+            ])
+            ->add('agency', EntityType::class, [
+                'mapped' => false,
+                'label' =>  false,
+                'class' => Agency::class,
+                'placeholder' => 'Selectionnez',
                 //'expanded' => true,
-            'multiple' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('commercial', EntityType::class, [
-            'label' =>  false,
-            'class' => User::class,
-            'required' => false,
-            'placeholder' => 'Selectionnez un commercial',
-            'choices' => $this->userRepository->findByRoles('ROLE_COMMERCIAL'),
-        ])
-        ->add('societe', TextType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => ''],
-            'mapped' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('numsiret', TextType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-            'mapped' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('postaladresse', TextType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => ''],
-            'mapped' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('postalcode', IntegerType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-            'mapped' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('ville', TextType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-            'mapped' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('salaries', ChoiceType::class, [
-            'mapped' => false,
-            'label' =>  false,
-            'choices'   =>  [
-                '0-4 salaries' =>  1,
-                '5-9 salaries' =>  2,
-                '10 salaries et + ' =>  3,
-            ],
-            'expanded' => true,
-            'multiple' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('name', TextType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('lastname', TextType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('telephone', TextType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('email', EmailType::class, [
-            'label' => false,
-            'attr' => ['placeholder' => 'Exemple@domail.com'],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-                new Email([
-                    'message' => 'Veuillez saisir une adresse email valide',
-                ]),
-            ],
-        ])
-        ->add('company_email', EmailType::class, [
-            'label' => false,
-            'mapped' => false,
-            'attr' => ['placeholder' => ' '],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-                new Email([
-                    'message' => 'Please enter an email valid',
-                ]),
-            ],
-        ])
-        ->add('plainPassword', RepeatedType::class, [
-            'type' => PasswordType::class,
-            'first_options' => [
-                'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Nouveau mot de passe...'],
+                'multiple' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez saisir votre mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit avoir en minimum {{ limit }} caractères',
-                            // max length allowed by Symfony for security reasons
-                        'max' => 4096,
+                        'message' => 'Ce champ est requis',
                     ]),
                 ],
+            ])
+            ->add('societe', TextType::class, [
                 'label' => false,
-            ],
-            'second_options' => [
-                'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Confirmation du mot de passe...'],
+                'attr' => ['placeholder' => ''],
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('numsiret', TextType::class, [
                 'label' => false,
-            ],
-            'invalid_message' => 'Les deux mots de passe ne correspondent pas.',
+                'attr' => ['placeholder' => ' '],
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('postaladresse', TextType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => ''],
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('postalcode', IntegerType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => ' '],
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('ville', TextType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => ' '],
+                'mapped' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('salaries', ChoiceType::class, [
+                'mapped' => false,
+                'label' =>  false,
+                'choices'   =>  [
+                    '0-4 salaries' =>  1,
+                    '5-9 salaries' =>  2,
+                    '10 salaries et + ' =>  3,
+                ],
+                'expanded' => true,
+                'multiple' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('name', TextType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => ' '],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => ' '],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('telephone', TextType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => ' '],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('email', EmailType::class, [
+                'label' => false,
+                'attr' => ['placeholder' => 'Exemple@domail.com'],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                    new Email([
+                        'message' => 'Veuillez saisir une adresse email valide',
+                    ]),
+                ],
+            ])
+            ->add('company_email', EmailType::class, [
+                'label' => false,
+                'mapped' => false,
+                'attr' => ['placeholder' => ' '],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                    new Email([
+                        'message' => 'Please enter an email valid',
+                    ]),
+                ],
+            ])
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'first_options' => [
+                    'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Nouveau mot de passe...'],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Veuillez saisir votre mot de passe',
+                        ]),
+                        new Length([
+                            'min' => 6,
+                            'minMessage' => 'Votre mot de passe doit avoir en minimum {{ limit }} caractères',
+                            // max length allowed by Symfony for security reasons
+                            'max' => 4096,
+                        ]),
+                    ],
+                    'label' => false,
+                ],
+                'second_options' => [
+                    'attr' => ['autocomplete' => 'new-password', 'placeholder' => 'Confirmation du mot de passe...'],
+                    'label' => false,
+                ],
+                'invalid_message' => 'Les deux mots de passe ne correspondent pas.',
                 // Instead of being set onto the object directly,
                 // this is read and encoded in the controller
-            'mapped' => false,
-        ])
-        ->add('authpersonne_1', TextType::class, [
-            'label' => false,
-            'mapped' => false,
-            'attr' => ['placeholder' => 'prénom + nom...'],
-            'required'  => false,
-        ])
-        ->add('authpersonne_2', TextType::class, [
-            'label' => false,
-            'mapped' => false,
-            'attr' => ['placeholder' => 'prénom + nom...'],
-            'required'  => false,
-        ])
-        ->add('authpersonne_3', TextType::class, [
-            'label' => false,
-            'mapped' => false,
-            'attr' => ['placeholder' => 'prénom + nom...'],
-            'required'  => false,
-        ])
-        ->add('banque', TextType::class, [
-            'mapped' => false,
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-        ])
-        ->add('iban', TextType::class, [
-            'mapped' => false,
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('bic', TextType::class, [
-            'mapped' => false,
-            'label' => false,
-            'attr' => ['placeholder' => ' '],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('fraiActivationCart', CheckboxType::class, [
-            'label' => "Le montant de 49€HT correspond à l’ensemble des démarches administratives effectuées et le coût de la carte.",
-            'mapped' => false,
-            'constraints' => [
-                new IsTrue([
-                    'message' => 'Frais d\'activation de la carte',
-                ]),
-            ],
-        ])
-        ->add('agreeTerms', CheckboxType::class, [
-            'label' => "J'accepte les conditions générales du contrat. J'accepte que mes données personnelles (prénom, nom, mail, téléphone) soient utilisées pour me joindre en cas de besoin. ",
-            'mapped' => false,
-            'constraints' => [
-                new IsTrue([
-                    'message' => 'Vous devez accepter les termes et conditions générales de vente.',
-                ]),
-            ],
-        ])
-        ->add('eligibilite', CheckboxType::class, [
-            'label' => "Je souhaite être recontacté par l'assureur du réseau Intellia afin d'être accompagné dans les démarches de souscription à la décennale photovoltaïque.",
-            'mapped' => false,
-            'required'  => false,
-        ])
-        ->add('ribFile', FileType::class, [
-            'attr' => ['class' => false],
-            'label' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
-        ])
-        ->add('cniFile', FileType::class, [
-            'required' => false,
-            'label' => false,
-        ])
-        ->add('signature', HiddenType::class, [
-            'row_attr'  => [
-                'name' => "signed",
-                'style' => "display: none;",
-            ],
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Veuillez signer le contrat',
-                ]),
-            ],
-            'required' => true,
-            'mapped' => false,
-        ])
+                'mapped' => false,
+            ])
+            ->add('authpersonne_1', TextType::class, [
+                'label' => false,
+                'mapped' => false,
+                'attr' => ['placeholder' => 'prénom + nom...'],
+                'required'  => false,
+            ])
+            ->add('authpersonne_2', TextType::class, [
+                'label' => false,
+                'mapped' => false,
+                'attr' => ['placeholder' => 'prénom + nom...'],
+                'required'  => false,
+            ])
+            ->add('authpersonne_3', TextType::class, [
+                'label' => false,
+                'mapped' => false,
+                'attr' => ['placeholder' => 'prénom + nom...'],
+                'required'  => false,
+            ])
+            ->add('banque', TextType::class, [
+                'mapped' => false,
+                'label' => false,
+                'attr' => ['placeholder' => ' '],
+            ])
+            ->add('iban', TextType::class, [
+                'mapped' => false,
+                'label' => false,
+                'attr' => ['placeholder' => ' '],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('bic', TextType::class, [
+                'mapped' => false,
+                'label' => false,
+                'attr' => ['placeholder' => ' '],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('fraiActivationCart', CheckboxType::class, [
+                'label' => "Le montant de 49€HT correspond à l’ensemble des démarches administratives effectuées et le coût de la carte.",
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Frais d\'activation de la carte',
+                    ]),
+                ],
+            ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'label' => "J'accepte les conditions générales du contrat. J'accepte que mes données personnelles (prénom, nom, mail, téléphone) soient utilisées pour me joindre en cas de besoin. ",
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez accepter les termes et conditions générales de vente.',
+                    ]),
+                ],
+            ])
+            ->add('eligibilite', CheckboxType::class, [
+                'label' => "Je souhaite être recontacté par l'assureur du réseau Intellia afin d'être accompagné dans les démarches de souscription à la décennale photovoltaïque.",
+                'mapped' => false,
+                'required'  => false,
+            ])
+            ->add('ribFile', FileType::class, [
+                'attr' => ['class' => false],
+                'label' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Ce champ est requis',
+                    ]),
+                ],
+            ])
+            ->add('cniFile', FileType::class, [
+                'required' => false,
+                'label' => false,
+            ])
+            ->add('signature', HiddenType::class, [
+                'row_attr'  => [
+                    'name' => "signed",
+                    'style' => "display: none;",
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez signer le contrat',
+                    ]),
+                ],
+                'required' => true,
+                'mapped' => false,
+            ])
             //->add('job')
         ;
 
@@ -330,7 +321,7 @@ class UserType extends AbstractType
 
                 $form = $event->getForm();
 
-                if ($adress){
+                if ($adress) {
 
                     $agency = $adress->getAgence();
 
@@ -338,8 +329,7 @@ class UserType extends AbstractType
 
                     $form->get('agency')->setData($agency);
                     $form->get('agenceadresse')->setData($adress);
-
-                }else{
+                } else {
                     $this->addAdressFields($form, null);
                 }
             }
@@ -352,11 +342,12 @@ class UserType extends AbstractType
      * @param Agency $agence
      * @return void
      */
-    private function addAdressFields($form, ?Agency $agence){
+    private function addAdressFields($form, ?Agency $agence)
+    {
 
         $builder = $form->getConfig()->getFormFactory()->createNamedBuilder(
-            'agenceadresse', 
-            EntityType::class, 
+            'agenceadresse',
+            EntityType::class,
             null,
             [
                 'label' => false,

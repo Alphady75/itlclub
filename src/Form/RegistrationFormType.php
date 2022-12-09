@@ -42,14 +42,12 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('conseiller', TextType::class, [
-            'label' => false,
-            'mapped' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Ce champ est requis',
-                ]),
-            ],
+        ->add('commercial', EntityType::class, [
+            'label' =>  false,
+            'class' => User::class,
+            'required' => false,
+            'placeholder' => 'Selectionnez un commercial',
+            'choices' => $this->userRepository->findByRoles('ROLE_COMMERCIAL'),
         ])
         ->add('agency', EntityType::class, [
             'mapped' => false,

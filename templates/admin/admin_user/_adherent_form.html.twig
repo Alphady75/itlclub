@@ -1,4 +1,4 @@
-{{ form_start(registrationForm, {'attr': {'id': 'registration_form'}}) }}
+{{ form_start(registrationForm, {'attr': {'id': 'adherent_form'}}) }}
 
 <fieldset class="border rounded p-3 mb-4">
 	<legend class="form-title text-center">Formulaire d'adhésion</legend>
@@ -304,33 +304,3 @@
 	<button class="btn {{ app.request.attributes.get('_route') == 'app_register' ? 'primary-btn ' : 'btn-primary' }} rounded-0 mb-3" type="submit">Souscrire l'abonnement</button>
 </div>
 {{ form_end(registrationForm) }}
-
-{% block javascripts %}
-	<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
-
-	<script type="text/javascript">
-
-		const canvas = document.querySelector("canvas");
-
-const signaturePad = new SignaturePad(canvas);
-
-$('#clear').click(function (e) {
-e.preventDefault();
-signaturePad.clear();
-})
-
-var form = document.getElementById('registration_form');
-
-// Submit form
-form.addEventListener('submit', function (event) {
-
-event.preventDefault();
-
-var image_url = signaturePad.toDataURL();
-
-$('#registration_form_signature').val(image_url);
-
-form.submit();
-});
-	</script>
-{% endblock %}

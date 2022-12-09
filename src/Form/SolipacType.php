@@ -188,7 +188,7 @@ class SolipacType extends AbstractType
             ])
             ->add('pacAirEauMarque', TextType::class, [
                 'label' => 'Marque',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -197,7 +197,7 @@ class SolipacType extends AbstractType
             ])
             ->add('pacAirEauVolume', TextType::class, [
                 'label' => 'Volume',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -210,7 +210,7 @@ class SolipacType extends AbstractType
             ])
             ->add('pacAirAirMarque', TextType::class, [
                 'label' => 'Marque',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -219,7 +219,7 @@ class SolipacType extends AbstractType
             ])
             ->add('pacAirAirVolume', TextType::class, [
                 'label' => 'Volume',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -232,7 +232,7 @@ class SolipacType extends AbstractType
             ])
             ->add('ballonThermoMarque', TextType::class, [
                 'label' => 'Marque',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -241,7 +241,7 @@ class SolipacType extends AbstractType
             ])
             ->add('ballonThermoVolume', TextType::class, [
                 'label' => 'Volume',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -254,7 +254,7 @@ class SolipacType extends AbstractType
             ])
             ->add('biomasseMarque', TextType::class, [
                 'label' => 'Marque',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -263,7 +263,7 @@ class SolipacType extends AbstractType
             ])
             ->add('biomasseVolume', NumberType::class, [
                 'label' => 'Volume',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -276,7 +276,7 @@ class SolipacType extends AbstractType
             ])
             ->add('planChauffantMarque', TextType::class, [
                 'label' => 'Marque',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -285,7 +285,7 @@ class SolipacType extends AbstractType
             ])
             ->add('planChauffantVolume', NumberType::class, [
                 'label' => 'Volume',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -298,7 +298,7 @@ class SolipacType extends AbstractType
             ])
             ->add('adoucisseurMarque', TextType::class, [
                 'label' => 'Marque',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -307,7 +307,7 @@ class SolipacType extends AbstractType
             ])
             ->add('adoucisseurVolume', NumberType::class, [
                 'label' => 'Volume',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -320,7 +320,7 @@ class SolipacType extends AbstractType
             ])
             ->add('ventilationMarque', TextType::class, [
                 'label' => 'Marque',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -329,7 +329,7 @@ class SolipacType extends AbstractType
             ])
             ->add('ventilationVolume', NumberType::class, [
                 'label' => 'Vollumer',
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -411,7 +411,7 @@ class SolipacType extends AbstractType
                     'Biomasse' =>  'Biomasse'
                 ],
                 'expanded' => true,
-                'required' => 'false',
+                'required' => false,
                 'multiple' => true,
                 'constraints' => [
                     new NotBlank([
@@ -430,7 +430,7 @@ class SolipacType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -447,7 +447,7 @@ class SolipacType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -464,7 +464,7 @@ class SolipacType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -479,7 +479,7 @@ class SolipacType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -494,7 +494,7 @@ class SolipacType extends AbstractType
                 ],
                 'expanded' => true,
                 'multiple' => true,
-                'required' => 'false',
+                'required' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Ce champ est requis',
@@ -536,7 +536,7 @@ class SolipacType extends AbstractType
                     'Intellia' =>  'Intellia',
                 ],
                 'expanded' => true,
-                'required' => 'false',
+                'required' => false,
                 'multiple' => true,
                 'constraints' => [
                     new NotBlank([

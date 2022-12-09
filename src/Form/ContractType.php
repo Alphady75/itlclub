@@ -6,7 +6,9 @@ use App\Entity\Contract;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use App\Entity\Company;
+use App\Entity\User;
 use App\Repository\CompanyRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -15,12 +17,20 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ContractType extends AbstractType
 {
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('commercial', TextType::class, [
-                'label' => 'Commercial',
-                'attr' => ['placeholder' => 'prénom + nom...'],
+            ->add('commercial', EntityType::class, [
+                'label' =>  'Commercial',
+                'class' => User::class,
+                'required' => false,
+                'placeholder' => 'Selectionnez un commercial',
+                'choices' => $this->userRepository->findByRoles('ROLE_COMMERCIAL'),
             ])
             ->add('contractState', CheckboxType::class, [
                 'label' => "Actif",
@@ -70,8 +80,7 @@ class ContractType extends AbstractType
                         ->orderBy('c.name', 'ASC');
                 },
                 'choice_label' => 'name',
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

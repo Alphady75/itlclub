@@ -89,11 +89,11 @@ class RegistrationController extends AbstractController
             $adress->setCity($form->get('ville')->getData());
             $adressRepository->add($adress);
 
-            // 4 - Création du contract
+            // 4 - Création du contrat
             $contract->setCompany($company);
             $contract->setSignature($form->get('signature')->getData());
             $contract->setContractState(1);
-            $contract->setCommercial($form->get('conseiller')->getData());
+            $contract->setCommercial($user->getCommercial());
             $contract->setAuthorizedPerson1($form->get('authpersonne_1')->getData());
             $contract->setAuthorizedPerson2($form->get('authpersonne_2')->getData());
             $contract->setAuthorizedPerson3($form->get('authpersonne_3')->getData());

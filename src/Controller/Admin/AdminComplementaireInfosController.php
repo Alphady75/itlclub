@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/commercial/complementaire/infos')]
+#[Route('/admin/complementaire/infos')]
 class AdminComplementaireInfosController extends AbstractController
 {
     #[Route('/', name: 'admin_complementaire_infos_index', methods: ['GET'])]

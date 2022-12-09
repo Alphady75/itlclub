@@ -16,7 +16,7 @@ use App\Repository\AgenceAdressRepository;
 use App\Entity\AgenceAdress;
 use App\Repository\UserRepository;
 
-#[Route('/commercial/agency')]
+#[Route('/admin/agency')]
 class AdminAgencyController extends AbstractController
 {
     #[Route('/', name: 'admin_agency_index', methods: ['GET'])]

@@ -34,7 +34,7 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 // use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-#[Route('/admin/users')]
+#[Route('/commercial/users')]
 class AdminUserController extends AbstractController
 {
 
@@ -204,7 +204,7 @@ class AdminUserController extends AbstractController
             $contract->setCompany($company);
             $contract->setSignature($form->get('signature')->getData());
             $contract->setContractState(1);
-            $contract->setCommercial($form->get('conseiller')->getData());
+            $contract->setCommercial($user->getCommercial());
             $contract->setAuthorizedPerson1($form->get('authpersonne_1')->getData());
             $contract->setAuthorizedPerson2($form->get('authpersonne_2')->getData());
             $contract->setAuthorizedPerson3($form->get('authpersonne_3')->getData());
@@ -233,7 +233,7 @@ class AdminUserController extends AbstractController
             // do anything else you need here, like send an email
             $this->addFlash('info', 'Le contenu a bien été cré, vérifier l\'adresse email pour activer le compte');
 
-            return $this->redirectToRoute('admin_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('admin_user_show', ['id' => $user->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/admin_user/new.html.twig', [

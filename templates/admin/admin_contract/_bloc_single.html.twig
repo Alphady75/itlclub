@@ -5,7 +5,9 @@
 				{{ include('admin/admin_contract/_logo64.html.twig') }}
 			</th>
 			<td>
-				<h1 style="color: white; text-align: center;font-size: 2rem;">Contrat <strong>{{ appName }}</strong></h1>
+				<h1 style="color: white; text-align: center;font-size: 2rem;">Contrat
+					<strong>{{ appName }}</strong>
+				</h1>
 			</td>
 		</tr>
 	</tbody>
@@ -16,47 +18,55 @@
 	<tbody>
 		<tr>
 			<th style="text-align: left; width: 50%;">Nom de la société</th>
-			<td><strong>{{ company.name ?? '' }}</strong></td>
+			<td>
+				<strong>{{ user.company.name ?? '' }}</strong>
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">Nom et prénom</th>
-			<td><strong>{{ user.name ~ " " ~ user.lastname }}</strong></td>
+			<td>
+				<strong>{{ user.name ~ " " ~ user.lastname }}</strong>
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">N° Portable</th>
-			<td>{{ user.telephone ?? '' }} / {{ company.phoneNumber ?? '' }}</td>
+			<td>{{ user.telephone ?? '' }}
+				/
+				{{ user.company.phoneNumber ?? '' }}</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">Adresse postale</th>
-			<td>{{ adress.street ?? '' }}</td>
+			<td>{{ user.adress.street ?? '' }}</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">Ville</th>
-			<td>{{ adress.city ?? '' }}</td>
+			<td>{{ user.adress.city ?? '' }}</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">Code postal</th>
-			<td>{{ adress.postalCode ?? '' }}</td>
+			<td>{{ user.adress.postalCode ?? '' }}</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">N° de SIRET</th>
-			<td><strong>{{ company.siret ?? '' }}</strong></td>
+			<td>
+				<strong>{{ user.company.siret ?? '' }}</strong>
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">Nombres de salariés</th>
 			<td>
-				{% if company.nbEmployees == 1 %}
+				{% if user.company.nbEmployees == 1 %}
 					0-4 salaries
-				{% elseif company.nbEmployees == 2 %}
+				{% elseif user.company.nbEmployees == 2 %}
 					5-9 salaries
-				{% elseif company.nbEmployees == 3 %}
-					10 salaries et + 
+				{% elseif user.company.nbEmployees == 3 %}
+					10 salaries et +
 				{% endif %}
 			</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">Mail</th>
-			<td>{{ company.email ?? '' }}</td>
+			<td>{{ user.company.email ?? '' }}</td>
 		</tr>
 	</tbody>
 </table>
@@ -75,7 +85,9 @@
 		</tr>
 		<tr>
 			<th style="text-align: left;">Nom de la Banque</th>
-			<td><strong>{{ contract.banqueName ?? '' }}</strong></td>
+			<td>
+				<strong>{{ contract.banqueName ?? '' }}</strong>
+			</td>
 		</tr>
 	</tbody>
 </table>
@@ -86,32 +98,42 @@
 <table style="width: 100%; text-align: left!important;">
 	<tbody>
 		<tr>
-			<th style="text-align: left; width: 50%;">Conseiller</th>
-			<td><strong>{{ contract.commercial ?? '' }}</strong></td>
+			<th style="text-align: left; width: 50%;">Commercial</th>
+			<td>
+				<strong>
+					{{ contract.commercial.name ?? '' }}
+					{{ contract.commercial.lastname ?? '' }}
+				</strong>
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">Comptoir</th>
-			<td><strong>{{ contract.company.agenceadresse.agency.name ?? '' }}</strong></td>
+			<td>
+				<strong>{{ contract.company.agenceadresse.agence.name ?? '' }}</strong>
+			</td>
 		</tr>
 		<tr>
 			<th style="text-align: left; width: 50%;">Agence</th>
-			<td>{{ adress.street ?? '' }}</td>
+			<td>{{ contract.company.agenceadresse.street ?? '' }}</td>
 		</tr>
 	</tbody>
 </table>
 
 <hr>
-<h4 style="font-size: 17px;">4 - Signature <strong>Adhérent</strong></h4>
+<h4 style="font-size: 17px;">4 - Signature
+	<strong>Adhérent</strong>
+</h4>
 <table style="width: 100%; text-align: left!important;">
 	<tbody>
 		<tr>
 			<td colspan="2">
 				{% if contract.signature %}
-					<img src="{{ contract.signature }}"  alt="signature" height="150">
+					<img src="{{ contract.signature }}" alt="signature" height="150">
 				{% else %}
 					<span>aucune signature</span>
 				{% endif %}
-				<p class="p-0 m-0" style="font-style: italic;">Le {{ contract.contractDate ? contract.contractDate|date('d/m/Y à H:i') : '' }}</p>
+				<p class="p-0 m-0" style="font-style: italic;">Le
+					{{ contract.contractDate ? contract.contractDate|date('d/m/Y à H:i') : '' }}</p>
 			</td>
 		</tr>
 	</tbody>

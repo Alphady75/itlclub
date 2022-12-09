@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
-#[Route('/commercial/categorie/offres')]
+#[Route('/admin/categorie/offres')]
 class AdminCategorieOffresController extends AbstractController
 {
     private $sluger;

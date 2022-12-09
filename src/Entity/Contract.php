@@ -23,9 +23,6 @@ class Contract
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $commercial;
-
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $contractState;
 
@@ -81,6 +78,9 @@ class Contract
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $testEligibilite;
 
+    #[ORM\ManyToOne(inversedBy: 'contracts')]
+    private ?User $commercial = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,18 +94,6 @@ class Contract
     public function setContactDate(\DateTimeInterface $contactDate): self
     {
         $this->contactDate = $contactDate;
-
-        return $this;
-    }
-
-    public function getCommercial(): ?string
-    {
-        return $this->commercial;
-    }
-
-    public function setCommercial(string $commercial): self
-    {
-        $this->commercial = $commercial;
 
         return $this;
     }
@@ -308,6 +296,18 @@ class Contract
     public function setTestEligibilite(?bool $testEligibilite): self
     {
         $this->testEligibilite = $testEligibilite;
+
+        return $this;
+    }
+
+    public function getCommercial(): ?User
+    {
+        return $this->commercial;
+    }
+
+    public function setCommercial(?User $commercial): self
+    {
+        $this->commercial = $commercial;
 
         return $this;
     }

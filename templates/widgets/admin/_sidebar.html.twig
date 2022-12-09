@@ -1,44 +1,132 @@
 <!-- sidebar -->
 <div class="sidebar px-4 py-4 py-md-4  me-0">
-    <div class="d-flex flex-column h-100">
-        <a href="{{ path('admin_dashboard') }}" class="mb-0 brand-icon">
-            <img src="{{ asset('themes/front/assets/img/logo.png') }}" class="" style="height: 60px;">
-            <!--<span class="logo-icon">
-                
-            </span>
-            <span class="logo-text">{{ appName }}</span>-->
-        </a>
-        <!-- Menu: main ul -->
-        <ul class="menu-list flex-grow-1 mt-3">
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_dashboard' ? 'active' : '' }}" href="{{ path('admin_dashboard') }}"><i class="fa fa-tachometer-alt"></i><span>Tableau de Bord</span></a></li>
+	<div class="d-flex flex-column h-100">
+		<a href="{{ path('app_home') }}" target="_blank" class="mb-0 brand-icon">
+			<img
+			src="{{ asset('themes/front/assets/img/logo.png') }}" class="" style="height: 60px;">
+		<!--<span class="logo-icon">
+				                
+				            </span>
+				            <span class="logo-text">{{ appName }}</span>-->
+		</a>
+		<!-- Menu: main ul -->
+		<ul class="menu-list flex-grow-1 mt-3">
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'app_admin_compte_commerciaux' ? 'active' : '' }}" href="{{ path('app_admin_compte_commerciaux') }}"><i class="fa fa-user-circle"></i> <span> Commerciaux</span></a></li>
+			{% if is_granted('ROLE_ADMIN') %}
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'app_admin_compte_index' ? 'active' : '' }}" href="{{ path('app_admin_compte_index') }}"><i class="fa fa-users"></i> <span> Comptes utilisateurs</span></a></li>
-            
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_user_index' ? 'active' : '' }}" href="{{ path('admin_user_index') }}"><i class="fa fa-user-tie"></i> <span>Adhérents</span></a></li>
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_dashboard' ? 'active' : '' }}" href="{{ path('admin_dashboard') }}">
+						<i class="fa fa-tachometer-alt"></i>
+						<span>Tableau de Bord</span>
+					</a>
+				</li>
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_partenaires_index' ? 'active' : '' }}" href="{{ path('admin_partenaires_index') }}"><i class="fa fa-handshake"></i> <span>Partenaires</span></a></li>
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'app_admin_compte_commerciaux' ? 'active' : '' }}" href="{{ path('app_admin_compte_commerciaux') }}">
+						<i class="fa fa-user-circle"></i>
+						<span>
+							Commerciaux</span>
+					</a>
+				</li>
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_demande_index' ? 'active' : '' }}" href="{{ path('admin_demande_index') }}"><i class="icofont-folder-open"></i> <span>Demandes</span></a></li>
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'app_admin_compte_index' ? 'active' : '' }}" href="{{ path('app_admin_compte_index') }}">
+						<i class="fa fa-users"></i>
+						<span>
+							Comptes utilisateurs</span>
+					</a>
+				</li>
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'app_admin_solipac_index' ? 'active' : '' }}" href="{{ path('app_admin_solipac_index') }}"><i class="fa fa-file"></i> <span>Solipac</span></a></li>
+                <li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_partenaires_index' ? 'active' : '' }}" href="{{ path('admin_partenaires_index') }}">
+						<i class="fa fa-handshake"></i>
+						<span>Partenaires</span>
+					</a>
+				</li>
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_company_index' ? 'active' : '' }}" href="{{ path('admin_company_index') }}"><i class="fa fa-store-alt"></i> <span>Sociétés</span></a></li>
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_demande_index' ? 'active' : '' }}" href="{{ path('admin_demande_index') }}">
+						<i class="icofont-folder-open"></i>
+						<span>Demandes</span>
+					</a>
+				</li>
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_offres_index' ? 'active' : '' }}" href="{{ path('admin_offres_index') }}"><i class="icofont-money"></i> <span>Offres</span></a></li>
-            
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_categorie_offres_index' ? 'active' : '' }}" href="{{ path('admin_categorie_offres_index') }}"><i class="fa fa-tags"></i> <span>Catégories d'offres</span></a></li>
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'app_admin_solipac_index' ? 'active' : '' }}" href="{{ path('app_admin_solipac_index') }}">
+						<i class="fa fa-file"></i>
+						<span>Solipac</span>
+					</a>
+				</li>
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_documents_index' ? 'active' : '' }}" href="{{ path('admin_documents_index') }}"><i class="icofont-document-folder"></i> <span>Documents</span></a></li>
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_company_index' ? 'active' : '' }}" href="{{ path('admin_company_index') }}">
+						<i class="fa fa-store-alt"></i>
+						<span>Sociétés</span>
+					</a>
+				</li>
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_contract_index' ? 'active' : '' }}" href="{{ path('admin_contract_index') }}"><i class="icofont-page"></i> <span>Contrats</span></a></li>
-            
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_agency_index' ? 'active' : '' }}" href="{{ path('admin_agency_index') }}"><i class="icofont-home"></i> <span>Agences</span></a></li>
-            
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_agence_adress_index' ? 'active' : '' }}" href="{{ path('admin_agence_adress_index') }}"><i class="fa fa-map-marker-alt"></i> <span>Adresse agences</span></a></li>
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_offres_index' ? 'active' : '' }}" href="{{ path('admin_offres_index') }}">
+						<i class="icofont-money"></i>
+						<span>Offres</span>
+					</a>
+				</li>
 
-            <li><a class="m-link {{ app.request.attributes.get('_route') == 'admin_adress_index' ? 'active' : '' }}" href="{{ path('admin_adress_index') }}"><i class="fa fa-map-marker-alt"></i> <span>Adresses adhérants</span></a></li>
-        </ul>
-    </div>
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_categorie_offres_index' ? 'active' : '' }}" href="{{ path('admin_categorie_offres_index') }}">
+						<i class="fa fa-tags"></i>
+						<span>Catégories d'offres</span>
+					</a>
+				</li>
+
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_documents_index' ? 'active' : '' }}" href="{{ path('admin_documents_index') }}">
+						<i class="icofont-document-folder"></i>
+						<span>Documents</span>
+					</a>
+				</li>
+
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_contract_index' ? 'active' : '' }}" href="{{ path('admin_contract_index') }}">
+						<i class="icofont-page"></i>
+						<span>Contrats</span>
+					</a>
+				</li>
+
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_agency_index' ? 'active' : '' }}" href="{{ path('admin_agency_index') }}">
+						<i class="icofont-home"></i>
+						<span>Agences</span>
+					</a>
+				</li>
+
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_agence_adress_index' ? 'active' : '' }}" href="{{ path('admin_agence_adress_index') }}">
+						<i class="fa fa-map-marker-alt"></i>
+						<span>Adresse agences</span>
+					</a>
+				</li>
+
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_adress_index' ? 'active' : '' }}" href="{{ path('admin_adress_index') }}">
+						<i class="fa fa-map-marker-alt"></i>
+						<span>Adresses adhérants</span>
+					</a>
+				</li>
+
+			{% endif %}
+
+			{% if is_granted('ROLE_COMMERCIAL') %}
+
+				<li>
+					<a class="m-link {{ app.request.attributes.get('_route') == 'admin_user_index' ? 'active' : '' }}" href="{{ path('admin_user_index') }}">
+						<i class="fa fa-user-tie"></i>
+						<span>Adhérents</span>
+					</a>
+				</li>
+
+			{% endif %}
+
+		</ul>
+	</div>
 </div>
